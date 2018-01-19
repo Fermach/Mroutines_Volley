@@ -1,0 +1,171 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/area_actualizarRutina"
+    android:weightSum="1"
+    >
+    <TextView
+        android:layout_marginTop="5sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Añadir ejercicio"
+        android:gravity="center"
+        android:textSize="20sp"
+        />
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:counterMaxLength="30"
+        app:counterEnabled="true"
+        app:errorEnabled="true"
+        android:layout_marginLeft="13sp"
+        android:layout_marginRight="17sp"
+        android:layout_weight="9.38">
+        <EditText
+            android:id="@+id/editText_nombreEjercicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Introduzca el nombre"
+            android:inputType="text"
+            android:textSize="15sp" />
+    </android.support.design.widget.TextInputLayout>
+
+     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterMaxLength="30"
+            app:counterEnabled="true"
+            app:errorEnabled="true"
+            android:layout_marginLeft="13sp"
+            android:layout_marginRight="17sp"
+            android:layout_weight="9.38">
+            <EditText
+                android:id="@+id/editText_seriesEjercicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Introduzca el numero de series"
+                android:inputType="text"
+                android:textSize="15sp" />
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterMaxLength="30"
+            app:counterEnabled="true"
+            app:errorEnabled="true"
+            android:layout_marginLeft="13sp"
+            android:layout_marginRight="17sp"
+            android:layout_weight="9.38">
+            <EditText
+                android:id="@+id/editText_repesEjercicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Introduzca el numero de repeticiones"
+                android:inputType="text"
+                android:textSize="15sp" />
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterMaxLength="30"
+            app:counterEnabled="true"
+            app:errorEnabled="true"
+            android:layout_marginLeft="13sp"
+            android:layout_marginRight="17sp"
+            android:layout_weight="9.38">
+            <EditText
+                android:id="@+id/editText_tiempoEjercicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Introduzca la duración del ejercicio"
+                android:inputType="text"
+                android:textSize="15sp" />
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Introduzca el grupo muscular principal "
+            android:layout_marginLeft="17sp"
+            android:textSize="15sp"
+            android:layout_marginTop="10sp"
+            />
+        <Spinner
+            android:id="@+id/spinner_tipoEjercicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="11sp"
+            android:layout_marginLeft="17sp"
+            android:layout_marginRight="17dp"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:layout_marginTop="38sp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_cancelar_formRutina_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancelar" />
+
+        <Button
+            android:id="@+id/btn_crear_formRutina_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Crear Rutina" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

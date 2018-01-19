@@ -12,6 +12,7 @@ public class Rutina implements Serializable{
         String nivel;
 
     public Rutina() {
+
     }
 
     public Rutina(String nombre, String tipo, String nivel) {
