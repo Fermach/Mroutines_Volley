@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.example.fermach.mroutines.Ejercicios.Crear_Editar_Ejercicios.CrearEjercicioVista;
 import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaVista;
 
 /**
@@ -80,23 +81,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //detecta el item de nuestro NavigationBar clickeado y nos permite navegar por los fragmentos
         int id = item.getItemId();
         boolean itemSeleccionado= false;
-/*
-        if (id == R.id.nav_lista_contactos) {
-            fragment= new ContactsList();
+
+        if (id == R.id.nav_nuevo_ejercicio) {
+            fragment= new CrearEjercicioVista();
             itemSeleccionado=true;
-        } else if (id == R.id.nav_nueva_empresa) {
-            fragment= new Companies_form();
+        }
+
+        else if (id == R.id.nav_nueva_rutina) {
+            fragment= new CrearRutinaVista();
             itemSeleccionado=true;
-        } else if (id == R.id.nav_lista_empresas) {
+        }
+         /*else if (id == R.id.nav_lista_empresas) {
             fragment= new CompanyList();
             itemSeleccionado=true;
         }else if (id == R.id.nav_nuevo_contacto) {
             fragment= new Contacts_form();
             itemSeleccionado=true;
         }
+        */
         if(itemSeleccionado==true){
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
-        }*/
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

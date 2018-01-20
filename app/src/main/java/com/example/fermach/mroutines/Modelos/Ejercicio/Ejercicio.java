@@ -9,16 +9,15 @@ import java.sql.Time;
 
 public class Ejercicio implements Serializable {
 
-     String nombre;
-     int series;
-     int repeticiones;
-     String tiempo;
+     String nombre="";
+     String series="0";
+     String repeticiones="0";
+     String tiempo ="0";
      String tipo;
      String rutina;
 
-    public Ejercicio(){}
 
-    public Ejercicio(String nombre, int series, int repeticiones, String tiempo, String tipo, String rutina) {
+    public Ejercicio(String nombre, String series, String repeticiones, String tiempo, String tipo, String rutina) {
         this.nombre = nombre;
         this.series = series;
         this.repeticiones = repeticiones;
@@ -35,19 +34,19 @@ public class Ejercicio implements Serializable {
         this.nombre = nombre;
     }
 
-    public int getSeries() {
+    public String getSeries() {
         return series;
     }
 
-    public void setSeries(int series) {
+    public void setSeries(String series) {
         this.series = series;
     }
 
-    public int getRepeticiones() {
+    public String getRepeticiones() {
         return repeticiones;
     }
 
-    public void setRepeticiones(int repeticiones) {
+    public void setRepeticiones(String repeticiones) {
         this.repeticiones = repeticiones;
     }
 

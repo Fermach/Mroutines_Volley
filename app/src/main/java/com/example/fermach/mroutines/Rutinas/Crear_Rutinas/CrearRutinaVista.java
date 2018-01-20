@@ -57,15 +57,8 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
 
         inicializarVistas();
         activarControladores();
-
-
-        String[] valores_tipo= {"musculacion","cardiovascular","otro"};
-        String[] valores_nivel= {"bajo","medio","alto"};
-
-        sp_nivel_rutina.setAdapter(new ArrayAdapter<String>
-                (getContext(),R.layout.support_simple_spinner_dropdown_item,valores_nivel));
-        sp_tipo_rutina.setAdapter(new ArrayAdapter<String>
-                (getContext(),R.layout.support_simple_spinner_dropdown_item,valores_tipo));
+        poblarSpinner();
+        poblarListaEjercicios();
 
         presenter=new CrearRutinaPresenter(this);
         presenter.cargaRutinas();
@@ -100,10 +93,23 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
                 presenter.crearRutina(rutina);
             }
         });
+    }
 
+    public void poblarSpinner(){
+        String[] valores_tipo= {"musculacion","cardiovascular","otro"};
+        String[] valores_nivel= {"bajo","medio","alto"};
+
+        sp_nivel_rutina.setAdapter(new ArrayAdapter<String>
+                (getContext(),R.layout.support_simple_spinner_dropdown_item,valores_nivel));
+        sp_tipo_rutina.setAdapter(new ArrayAdapter<String>
+                (getContext(),R.layout.support_simple_spinner_dropdown_item,valores_tipo));
 
     }
 
+    public void poblarListaEjercicios(){
+
+
+    }
 
     @Override
     public void mostrarRutinas(List<Rutina> rutinas) {
@@ -112,5 +118,7 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
 
     @Override
     public void mostrarError() {
+
+
     }
 }
