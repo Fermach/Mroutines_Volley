@@ -2,6 +2,7 @@ package com.example.fermach.mroutines.Rutinas.Crear_Rutinas;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fermach.mroutines.Ejercicios.Crear_Editar_Ejercicios.CrearEjercicioVista;
+import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
 import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 import com.example.fermach.mroutines.Modelos.Rutina.RutinasRepository;
 import com.example.fermach.mroutines.R;
@@ -32,6 +35,7 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
     private EditText et_nombre_rutina;
     private Spinner sp_tipo_rutina;
     private Spinner sp_nivel_rutina;
+    CrearRutina_EjerciciosAdapter ejerciciosAdapter;
     private Button añadir_ejerc_rutina;
     private Button añadir_rutina;
     private Button cancelar_rutina;
@@ -39,11 +43,12 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
     View myView;
     private Fragment fragment;
     private TextView num_rutinas;
-    String nombre;
-    String nivel;
-    String tipo;
-    Rutina rutina;
-
+    private String nombre;
+    private String nivel;
+    private String tipo;
+    private Rutina rutina;
+    private final String RUTINA ="RUTINA"
+;
 
     public CrearRutinaVista() {
     }
@@ -58,10 +63,10 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
         inicializarVistas();
         activarControladores();
         poblarSpinner();
-        poblarListaEjercicios();
 
         presenter=new CrearRutinaPresenter(this);
         presenter.cargaRutinas();
+        presenter.cargaEjercicios();
 
         return myView;
     }
@@ -93,6 +98,30 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
                 presenter.crearRutina(rutina);
             }
         });
+
+        añadir_ejerc_rutina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                nombre= et_nombre_rutina.getText().toString();
+                tipo= sp_tipo_rutina.getSelectedItem().toString();
+                nivel= sp_nivel_rutina.getSelectedItem().toString();
+                rutina=new Rutina(nombre,tipo,nivel);
+
+                //no funciona (SOLUCIONAR)
+                Log.i("Valor de nombre:", nombre);
+                if(nombre=="" || nombre==null){
+                    Snackbar.make(myView,"Debe introducir el nombre de la rutina", Snackbar.LENGTH_SHORT).show();
+                }else{
+                    presenter.crearRutina(rutina);
+                    Bundle args = new Bundle();
+                    args.putSerializable(RUTINA, nombre);
+                    fragment = new CrearEjercicioVista();
+                    getFragmentManager().beginTransaction().replace(R.id.content_main, fragment, RUTINA)
+                            .addToBackStack(RUTINA).commit();
+                }
+            }
+        });
     }
 
     public void poblarSpinner(){
@@ -106,9 +135,10 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
 
     }
 
-    public void poblarListaEjercicios(){
-
-
+    @Override
+    public void poblarListaEjercicios(List<Ejercicio> ejercicios){
+      ejerciciosAdapter= new CrearRutina_EjerciciosAdapter(myView.getContext(), ejercicios);
+      list_crear_rutina.setAdapter(ejerciciosAdapter);
     }
 
     @Override

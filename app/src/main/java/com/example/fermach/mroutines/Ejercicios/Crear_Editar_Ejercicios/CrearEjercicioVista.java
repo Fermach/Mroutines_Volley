@@ -19,6 +19,7 @@ import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 import com.example.fermach.mroutines.R;
 import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaContract;
 import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaPresenter;
+import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaVista;
 
 import java.util.List;
 
@@ -46,6 +47,7 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
     String repeticiones;
     String duracion;
     String tipo;
+    String rutina="";
     Ejercicio ejercicio;
 
     public CrearEjercicioVista() {
@@ -57,6 +59,16 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
         myView = inflater.inflate(R.layout.formulario_ejercicio, container, false);
 
         fragment = new CrearEjercicioVista();
+
+        Bundle args = getArguments();
+
+        if(args!=null) {
+            rutina = (String) args.getSerializable("RUTINA");
+            Log.i("Argumentos", "RECOGIDOS" );
+        }else{
+            Log.i("Argumentos", "NULOS" );
+
+        }
 
         inicializarVistas();
         activarControladores();
@@ -93,18 +105,26 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
                 duracion=et_duracion_ejercicio.getText().toString()+" "+sp_unid_tiempo.getSelectedItem().toString();
                 tipo=sp_tipo_ejercicio.getSelectedItem().toString().toLowerCase();
 
-                ejercicio=new Ejercicio(nombre,series,repeticiones,duracion,tipo,"");
+                ejercicio=new Ejercicio(nombre,series,repeticiones,duracion,tipo,rutina);
 
                 Log.i("Ejercicio creado:", ejercicio.toString());
                 presenter.crearEjercicio(ejercicio);
             }
         });
 
+        cancelar_ejercicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                fragment= new CrearRutinaVista();
+                getFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
+
+            }
+        });
     }
 
     public void poblarSpinner(){
-        String[] valores_tipo= {"Pierna","Torso", "Brazos","Espalda","Triceps","Biceps",
+        String[] valores_tipo= {"Pierna","Torso", "Brazos","Pecho", "Espalda","Triceps","Biceps",
                 "Hombros","Gluteos","Biceps Femoral","Cuadriceps", "Gemelos"};
 
         String[] valores_unid_tiempo= {"min","seg", "hor"};

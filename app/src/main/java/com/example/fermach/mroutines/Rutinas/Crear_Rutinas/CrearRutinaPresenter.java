@@ -2,6 +2,9 @@ package com.example.fermach.mroutines.Rutinas.Crear_Rutinas;
 
 import android.util.Log;
 
+import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
+import com.example.fermach.mroutines.Modelos.Ejercicio.EjerciciosDataSource;
+import com.example.fermach.mroutines.Modelos.Ejercicio.EjerciciosRepository;
 import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 import com.example.fermach.mroutines.Modelos.Rutina.RutinasDataSource;
 import com.example.fermach.mroutines.Modelos.Rutina.RutinasRepository;
@@ -14,11 +17,15 @@ import java.util.List;
 
 public class CrearRutinaPresenter implements CrearRutinaContract.Presenter{
     private RutinasRepository rutinasRepository;
+    private EjerciciosRepository ejerciciosRepository;
     private CrearRutinaContract.View rutinasView;
+
+
 
     public CrearRutinaPresenter(CrearRutinaContract.View rutinasView) {
         this.rutinasView = rutinasView;
         this.rutinasRepository = RutinasRepository.getInstance();
+        this.ejerciciosRepository = EjerciciosRepository.getInstance();
     }
 
     @Override
@@ -35,6 +42,21 @@ public class CrearRutinaPresenter implements CrearRutinaContract.Presenter{
              }
          });
 
+    }
+
+    @Override
+    public void cargaEjercicios() {
+        ejerciciosRepository.getEjercicios(new EjerciciosDataSource.CargaEjerciciosCallback() {
+            @Override
+            public void onEjerciciosCargados(List<Ejercicio> ejercicios) {
+               rutinasView.poblarListaEjercicios(ejercicios);
+            }
+
+            @Override
+            public void onEjerciciosCargadosError() {
+
+            }
+        });
     }
 
     @Override
