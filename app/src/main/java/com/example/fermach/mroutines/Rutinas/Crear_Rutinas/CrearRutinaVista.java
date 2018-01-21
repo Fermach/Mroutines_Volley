@@ -21,6 +21,7 @@ import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
 import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 import com.example.fermach.mroutines.Modelos.Rutina.RutinasRepository;
 import com.example.fermach.mroutines.R;
+import com.example.fermach.mroutines.Rutinas.Listado_Rutinas.ListaRutinasVista;
 
 import java.util.List;
 
@@ -90,8 +91,8 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
             @Override
             public void onClick(View view) {
                 nombre= et_nombre_rutina.getText().toString();
-                tipo= sp_tipo_rutina.getSelectedItem().toString();
-                nivel= sp_nivel_rutina.getSelectedItem().toString();
+                tipo= sp_tipo_rutina.getSelectedItem().toString().toLowerCase();
+                nivel= sp_nivel_rutina.getSelectedItem().toString().toLowerCase();
                 rutina=new Rutina(nombre,tipo,nivel);
 
                 Log.i("Rutina creada:", rutina.toString());
@@ -104,10 +105,11 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
             public void onClick(View view) {
 
                 nombre= et_nombre_rutina.getText().toString();
-                tipo= sp_tipo_rutina.getSelectedItem().toString();
-                nivel= sp_nivel_rutina.getSelectedItem().toString();
+                tipo= sp_tipo_rutina.getSelectedItem().toString().toLowerCase();
+                nivel= sp_nivel_rutina.getSelectedItem().toString().toLowerCase();
                 rutina=new Rutina(nombre,tipo,nivel);
 
+                Log.i("Valor de Rutina2:", nombre);
                 //no funciona (SOLUCIONAR)
                 Log.i("Valor de nombre:", nombre);
                 if(nombre=="" || nombre==null){
@@ -122,11 +124,19 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
                 }
             }
         });
+
+        cancelar_rutina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new ListaRutinasVista();
+                getFragmentManager().beginTransaction().replace(R.id.content_main, fragment ).commit();
+            }
+        });
     }
 
     public void poblarSpinner(){
-        String[] valores_tipo= {"musculacion","cardiovascular","otro"};
-        String[] valores_nivel= {"bajo","medio","alto"};
+        String[] valores_tipo= {"Musculacion","Cardiovascular","Otro"};
+        String[] valores_nivel= {"Bajo","Medio","Alto"};
 
         sp_nivel_rutina.setAdapter(new ArrayAdapter<String>
                 (getContext(),R.layout.support_simple_spinner_dropdown_item,valores_nivel));

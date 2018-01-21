@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.example.fermach.mroutines.Ejercicios.Crear_Editar_Ejercicios.CrearEjercicioVista;
 import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaVista;
+import com.example.fermach.mroutines.Rutinas.Listado_Rutinas.ListaRutinasVista;
 
 /**
   * Clase principal donde se gestionan los demás fragmentos
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        fragment= new CrearRutinaVista();
+        fragment= new ListaRutinasVista();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -91,10 +92,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragment= new CrearRutinaVista();
             itemSeleccionado=true;
         }
-         /*else if (id == R.id.nav_lista_empresas) {
-            fragment= new CompanyList();
+         else if (id == R.id.nav_lista_rutinas) {
+            fragment= new ListaRutinasVista();
             itemSeleccionado=true;
-        }else if (id == R.id.nav_nuevo_contacto) {
+        }
+        /*
+        else if (id == R.id.nav_nuevo_contacto) {
             fragment= new Contacts_form();
             itemSeleccionado=true;
         }

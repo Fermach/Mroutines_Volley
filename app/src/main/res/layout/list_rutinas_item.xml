@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/cardview"
+    card_view:cardCornerRadius="6dp"
+    card_view:cardBackgroundColor="@android:color/white"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardElevation="6dp"
+    card_view:contentPadding="4sp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp">
+
+
+        <TextView
+            android:id="@+id/nombre_textr"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/nombre_rutina_lista"
+            android:layout_alignStart="@+id/tipo_rutina_lista"
+            android:layout_weight="1"
+            android:text="Nombre: "
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/nombre_rutina_lista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@+id/nombre_textr"
+            android:text="Rutina"
+            android:textSize="25sp"
+            android:textStyle="italic" />
+
+
+        <TextView
+            android:id="@+id/tipo_rutina_lista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/nombre_textr"
+            android:layout_marginTop="22dp"
+            android:text="Tipo:"
+            android:layout_marginLeft="7sp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/nivel_rutina_lista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tipo_rutina_lista"
+            android:text="Nivel:"
+            android:layout_marginLeft="7sp"
+            android:textSize="15sp" />
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
