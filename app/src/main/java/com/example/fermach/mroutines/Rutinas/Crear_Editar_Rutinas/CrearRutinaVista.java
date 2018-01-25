@@ -1,4 +1,4 @@
-package com.example.fermach.mroutines.Rutinas.Crear_Rutinas;
+package com.example.fermach.mroutines.Rutinas.Crear_Editar_Rutinas;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,12 +14,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.fermach.mroutines.Ejercicios.Crear_Editar_Ejercicios.CrearEjercicioVista;
 import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
 import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
-import com.example.fermach.mroutines.Modelos.Rutina.RutinasRepository;
 import com.example.fermach.mroutines.R;
 import com.example.fermach.mroutines.Rutinas.Listado_Rutinas.ListaRutinasVista;
 
@@ -37,19 +35,16 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
     private Spinner sp_tipo_rutina;
     private Spinner sp_nivel_rutina;
     CrearRutina_EjerciciosAdapter ejerciciosAdapter;
-    private Button añadir_ejerc_rutina;
     private Button añadir_rutina;
     private Button cancelar_rutina;
-    private ListView list_crear_rutina;
-    View myView;
+    private View myView;
     private Fragment fragment;
     private TextView num_rutinas;
-    private String nombre;
+    private String rutina_nombre;
     private String nivel;
     private String tipo;
     private Rutina rutina;
-    private final String RUTINA ="RUTINA"
-;
+
 
     public CrearRutinaVista() {
     }
@@ -67,7 +62,6 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
 
         presenter=new CrearRutinaPresenter(this);
         presenter.cargaRutinas();
-        presenter.cargaEjercicios();
 
         return myView;
     }
@@ -75,13 +69,11 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
 
     public void inicializarVistas(){
 
-        et_nombre_rutina= (EditText)myView.findViewById(R.id.editText_nombreRutina);
-        sp_tipo_rutina= (Spinner)myView.findViewById(R.id.spinner_tipoRutina);
-        sp_nivel_rutina= (Spinner)myView.findViewById(R.id.spinner_nivelRutina);
-        añadir_ejerc_rutina= (Button)myView.findViewById(R.id.btn_crearEjercicio_enForm);
-        añadir_rutina= (Button)myView.findViewById(R.id.btn_crear_formRutina);
-        cancelar_rutina= (Button)myView.findViewById(R.id.btn_cancelar_formRutina);
-        list_crear_rutina= (ListView)myView.findViewById(R.id.list_crearRutina);
+        et_nombre_rutina= myView.findViewById(R.id.editText_nombreRutina);
+        sp_tipo_rutina= myView.findViewById(R.id.spinner_tipoRutina);
+        sp_nivel_rutina= myView.findViewById(R.id.spinner_nivelRutina);
+        añadir_rutina= myView.findViewById(R.id.btn_crear_formRutina);
+        cancelar_rutina= myView.findViewById(R.id.btn_cancelar_formRutina);
         num_rutinas=myView.findViewById(R.id.num_Rutinas);
     }
 
@@ -90,37 +82,21 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
         añadir_rutina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nombre= et_nombre_rutina.getText().toString();
+
+                rutina_nombre= et_nombre_rutina.getText().toString();
                 tipo= sp_tipo_rutina.getSelectedItem().toString().toLowerCase();
                 nivel= sp_nivel_rutina.getSelectedItem().toString().toLowerCase();
-                rutina=new Rutina(nombre,tipo,nivel);
+                rutina=new Rutina(rutina_nombre,tipo,nivel);
 
-                Log.i("Rutina creada:", rutina.toString());
-                presenter.crearRutina(rutina);
-            }
-        });
-
-        añadir_ejerc_rutina.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                nombre= et_nombre_rutina.getText().toString();
-                tipo= sp_tipo_rutina.getSelectedItem().toString().toLowerCase();
-                nivel= sp_nivel_rutina.getSelectedItem().toString().toLowerCase();
-                rutina=new Rutina(nombre,tipo,nivel);
-
-                Log.i("Valor de Rutina2:", nombre);
-                //no funciona (SOLUCIONAR)
-                Log.i("Valor de nombre:", nombre);
-                if(nombre=="" || nombre==null){
-                    Snackbar.make(myView,"Debe introducir el nombre de la rutina", Snackbar.LENGTH_SHORT).show();
-                }else{
+                if (rutina_nombre.length() < 1) {
+                    Snackbar.make(myView,"Debe introducir un nombre valido", Snackbar.LENGTH_SHORT).show();
+                } else {
+                    Log.i("Rutina creada:", rutina.toString());
                     presenter.crearRutina(rutina);
-                    Bundle args = new Bundle();
-                    args.putSerializable(RUTINA, nombre);
-                    fragment = new CrearEjercicioVista();
-                    getFragmentManager().beginTransaction().replace(R.id.content_main, fragment, RUTINA)
-                            .addToBackStack(RUTINA).commit();
+
+                    fragment = new ListaRutinasVista();
+                    getFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
+
                 }
             }
         });
@@ -135,7 +111,7 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
     }
 
     public void poblarSpinner(){
-        String[] valores_tipo= {"Musculacion","Cardiovascular","Otro"};
+        String[] valores_tipo= {"Musculación","Cardiovascular","Otro"};
         String[] valores_nivel= {"Bajo","Medio","Alto"};
 
         sp_nivel_rutina.setAdapter(new ArrayAdapter<String>
@@ -145,11 +121,6 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
 
     }
 
-    @Override
-    public void poblarListaEjercicios(List<Ejercicio> ejercicios){
-      ejerciciosAdapter= new CrearRutina_EjerciciosAdapter(myView.getContext(), ejercicios);
-      list_crear_rutina.setAdapter(ejerciciosAdapter);
-    }
 
     @Override
     public void mostrarRutinas(List<Rutina> rutinas) {

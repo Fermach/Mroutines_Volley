@@ -1,4 +1,4 @@
-package com.example.fermach.mroutines.Rutinas.Listado_Rutinas;
+package com.example.fermach.mroutines.Ejercicios.Listado_Ejercicios;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -20,31 +20,28 @@ import java.util.List;
  * Created by Fermach on 18/01/2018.
  */
 
-public class ListaRutinasAdapter extends ArrayAdapter<Rutina> {
+public class ListaEjerciciosAdapter extends ArrayAdapter<Ejercicio> {
 
-    public ListaRutinasAdapter(@NonNull Context context, List<Rutina> rutinas) {
+    public ListaEjerciciosAdapter(@NonNull Context context, List<Ejercicio> ejercicios) {
 
-        super(context, 0,rutinas);
+        super(context, 0,ejercicios);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Rutina rutina= getItem(position);
+        Ejercicio ejercicio= getItem(position);
 
 
         if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_rutinas_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_ejercicios_item, parent, false);
         }
 
-        TextView nombre = convertView.findViewById(R.id.nombre_rutina_lista);
-        TextView tipo = convertView.findViewById(R.id.tipo_rutina_lista);
-        TextView nivel = convertView.findViewById(R.id.nivel_rutina_lista);
+        TextView nombre = convertView.findViewById(R.id.nombre_ejercicio_item);
+        TextView tipo = convertView.findViewById(R.id.tipo_ejercicio_item);
 
-        nombre.setText(rutina.getNombre());
-        tipo.setText("Tipo: "+rutina.getTipo());
-        nivel.setText("Nivel: "+rutina.getNivel());
-
+        nombre.setText(ejercicio.getNombre());
+        tipo.setText("Tipo: "+ejercicio.getTipo());
 
         return convertView;
     }

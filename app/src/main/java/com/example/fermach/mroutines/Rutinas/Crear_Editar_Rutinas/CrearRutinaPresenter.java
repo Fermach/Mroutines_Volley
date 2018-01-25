@@ -1,4 +1,4 @@
-package com.example.fermach.mroutines.Rutinas.Crear_Rutinas;
+package com.example.fermach.mroutines.Rutinas.Crear_Editar_Rutinas;
 
 import android.util.Log;
 
@@ -44,20 +44,7 @@ public class CrearRutinaPresenter implements CrearRutinaContract.Presenter{
 
     }
 
-    @Override
-    public void cargaEjercicios() {
-        ejerciciosRepository.getEjercicios(new EjerciciosDataSource.CargaEjerciciosCallback() {
-            @Override
-            public void onEjerciciosCargados(List<Ejercicio> ejercicios) {
-               rutinasView.poblarListaEjercicios(ejercicios);
-            }
 
-            @Override
-            public void onEjerciciosCargadosError() {
-
-            }
-        });
-    }
 
     @Override
     public void crearRutina(Rutina rutina) {

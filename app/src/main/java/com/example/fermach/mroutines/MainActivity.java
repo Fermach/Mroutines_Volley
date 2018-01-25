@@ -12,8 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.example.fermach.mroutines.Ejercicios.Crear_Editar_Ejercicios.CrearEjercicioVista;
-import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaVista;
+import com.example.fermach.mroutines.Rutinas.Crear_Editar_Rutinas.CrearRutinaVista;
 import com.example.fermach.mroutines.Rutinas.Listado_Rutinas.ListaRutinasVista;
 
 /**
@@ -83,12 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         boolean itemSeleccionado= false;
 
-        if (id == R.id.nav_nuevo_ejercicio) {
-            fragment= new CrearEjercicioVista();
-            itemSeleccionado=true;
-        }
-
-        else if (id == R.id.nav_nueva_rutina) {
+        if (id == R.id.nav_nueva_rutina) {
             fragment= new CrearRutinaVista();
             itemSeleccionado=true;
         }
@@ -96,12 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragment= new ListaRutinasVista();
             itemSeleccionado=true;
         }
-        /*
-        else if (id == R.id.nav_nuevo_contacto) {
-            fragment= new Contacts_form();
-            itemSeleccionado=true;
-        }
-        */
+
         if(itemSeleccionado==true){
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
         }

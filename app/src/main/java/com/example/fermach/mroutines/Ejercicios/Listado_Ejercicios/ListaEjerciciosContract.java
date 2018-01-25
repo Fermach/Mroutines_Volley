@@ -1,4 +1,4 @@
-package com.example.fermach.mroutines.Rutinas.Crear_Rutinas;
+package com.example.fermach.mroutines.Ejercicios.Listado_Ejercicios;
 
 import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
 import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
@@ -9,17 +9,15 @@ import java.util.List;
  * Created by Fermach on 18/01/2018.
  */
 
-public interface CrearRutinaContract {
+public interface ListaEjerciciosContract {
 
     interface View {
-        void mostrarRutinas(List<Rutina> rutinas);
         void mostrarError();
         void poblarListaEjercicios(List<Ejercicio> ejercicios);
+        void activarListaClickable(List<Ejercicio> ejercicios);
+
     }
     interface Presenter {
-        void cargaRutinas();
-        void cargaEjercicios();
-        void crearRutina(Rutina rutina);
-
+        void cargaEjercicios(String rutina_nombre);
     }
 }

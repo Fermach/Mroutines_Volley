@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:id="@+id/detalleEjercicio"
+    card_view:cardCornerRadius="6dp"
+    card_view:cardBackgroundColor="@android:color/white"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardElevation="6dp"
+    card_view:contentPadding="4sp"
+    android:layout_width="300sp"
+    android:backgroundTint="@color/blueSky"
+    android:layout_height="350sp"
+    >
+
+<LinearLayout
+ android:layout_width="match_parent"
+ android:orientation="vertical"
+ android:layout_height="wrap_content">
+
+ <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+     <TextView
+         android:textColor="@android:color/black"
+         android:id="@+id/ejer_detalle_nombre"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="10sp"
+         android:layout_marginLeft="5sp"
+         android:layout_weight="1"
+         android:text="@string/nombre"
+         android:textSize="20sp" />
+
+     <TextView
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ejer_detalle_tipo"
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="5sp"
+        android:text="@string/tipo"
+        android:textSize="17sp" />
+
+  </LinearLayout>
+  <LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content"
+    >
+
+      <LinearLayout
+          android:layout_width="302dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:orientation="vertical"
+          android:paddingBottom="4dp">
+
+          <TextView
+              android:id="@+id/ejer_detalle_respeticiones"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="7sp"
+              android:layout_marginTop="192dp"
+              android:text="@string/repeticiones"
+              android:textSize="17sp" />
+
+          <TextView
+              android:id="@+id/ejer_detalle_series"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="7sp"
+              android:text="@string/series"
+              android:textSize="17sp" />
+
+
+      </LinearLayout>
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="541dp"
+         android:layout_weight="1"
+         android:orientation="vertical">
+
+
+         <TextView
+             android:id="@+id/ejer_detalle_tiempo"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="216sp"
+             android:text="@string/tiempo"
+             android:textSize="17sp" />
+
+     </LinearLayout>
+
+  </LinearLayout>
+</LinearLayout>
+
+</android.support.v7.widget.CardView>

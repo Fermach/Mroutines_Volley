@@ -16,6 +16,7 @@ public class EjerciciosRepository implements EjerciciosDataSource{
 
     private static EjerciciosRepository INSTANCIA = null;
     private List<Ejercicio> listaEjercicios = new ArrayList<>();
+    private List<Ejercicio> listaEjerciciosPorRutina = new ArrayList<>();
 
     public static EjerciciosRepository getInstance() {
         if (INSTANCIA == null) {
@@ -29,6 +30,19 @@ public class EjerciciosRepository implements EjerciciosDataSource{
     @Override
     public void getEjercicios(CargaEjerciciosCallback callback) {
         callback.onEjerciciosCargados(listaEjercicios);
+
+    }
+
+    @Override
+    public void getEjerciciosPorRutina(String rutina, CargaEjerciciosCallback callback) {
+        for (Ejercicio e: listaEjercicios) {
+            if(e.getRutina().equals(rutina)){
+                listaEjerciciosPorRutina.add(e);
+            }
+        }
+
+        callback.onEjerciciosCargados(listaEjerciciosPorRutina);
+        listaEjerciciosPorRutina=new ArrayList<>();
 
     }
 

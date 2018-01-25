@@ -33,7 +33,7 @@
         android:layout_marginLeft="10sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="f.manu_97@hotmail.com"
+        android:text="@string/correo"
         android:layout_marginBottom="10sp"
         />
 </LinearLayout>

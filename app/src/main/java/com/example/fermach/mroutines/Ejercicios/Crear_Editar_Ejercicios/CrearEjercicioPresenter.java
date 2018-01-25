@@ -5,10 +5,6 @@ import android.util.Log;
 import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
 import com.example.fermach.mroutines.Modelos.Ejercicio.EjerciciosDataSource;
 import com.example.fermach.mroutines.Modelos.Ejercicio.EjerciciosRepository;
-import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
-import com.example.fermach.mroutines.Modelos.Rutina.RutinasDataSource;
-import com.example.fermach.mroutines.Modelos.Rutina.RutinasRepository;
-import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaContract;
 
 import java.util.List;
 

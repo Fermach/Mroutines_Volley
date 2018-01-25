@@ -7,9 +7,9 @@ import java.io.Serializable;
  */
 
 public class Rutina implements Serializable{
-        String nombre;
-        String tipo;
-        String nivel;
+    private String nombre;
+    private String tipo;
+    private  String nivel;
 
     public Rutina() {
 

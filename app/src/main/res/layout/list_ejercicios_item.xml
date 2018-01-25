@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/item_ejercicio"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="90sp"
+    >
+
+    <LinearLayout
+        android:layout_width="298dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nombre_ejercicio_item"
+            android:layout_width="416dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="15sp"
+            android:layout_weight="1"
+            android:text="@string/nombre"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/tipo_ejercicio_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="18sp"
+            android:layout_marginBottom="10sp"
+            android:layout_weight="1"
+            android:text="@string/tipo"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="1sp"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray" />
+
+
+    <ImageView
+        android:layout_marginTop="17sp"
+        android:layout_marginLeft="10sp"
+        android:layout_width="62dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_keyboard_arrow_right_black_36dp" />
+
+</LinearLayout>

@@ -7,10 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.example.fermach.mroutines.Ejercicios.Listado_Ejercicios.ListaEjerciciosVista;
 import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 import com.example.fermach.mroutines.R;
-import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaVista;
+import com.example.fermach.mroutines.Rutinas.Crear_Editar_Rutinas.CrearRutinaVista;
 import java.util.List;
 
 
@@ -27,8 +30,7 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
     private FloatingActionButton fab_rutinas;
     private Fragment fragment;
     private Rutina rutina;
-    private final String RUTINA ="RUTINA"
-;
+    private final String RUTINA ="RUTINA";
 
     public ListaRutinasVista() {
     }
@@ -65,7 +67,9 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
             }
         });
 
+
     }
+
 
 
     @Override
@@ -74,6 +78,23 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
          list_rutinas.setAdapter(rutinasAdapter);
     }
 
+    @Override
+    public void activarListaClickable(final List<Rutina> rutinas) {
+        list_rutinas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                rutina= rutinas.get(position);
+                Bundle args = new Bundle();
+                args.putSerializable(RUTINA, rutina.getNombre());
+                Fragment toFragment = new ListaEjerciciosVista();
+                toFragment.setArguments(args);
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_main, toFragment, RUTINA)
+                        .addToBackStack(RUTINA).commit();
+            }
+        });
+    }
 
 
     @Override

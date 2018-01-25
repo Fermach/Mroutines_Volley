@@ -2,6 +2,7 @@ package com.example.fermach.mroutines.Ejercicios.Crear_Editar_Ejercicios;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,16 +11,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.fermach.mroutines.Ejercicios.Listado_Ejercicios.ListaEjerciciosVista;
 import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
-import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 import com.example.fermach.mroutines.R;
-import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaContract;
-import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaPresenter;
-import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaVista;
+import com.example.fermach.mroutines.Rutinas.Crear_Editar_Rutinas.CrearRutinaVista;
 
 import java.util.List;
 
@@ -42,13 +40,14 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
     View myView;
     private Fragment fragment;
     private TextView num_ejercicios;
-    String nombre;
+    String nombre="";
     String series;
     String repeticiones;
     String duracion;
     String tipo;
-    String rutina="";
+    String rutina;
     Ejercicio ejercicio;
+    private final String RUTINA ="RUTINA";
 
     public CrearEjercicioVista() {
     }
@@ -62,9 +61,10 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
 
         Bundle args = getArguments();
 
-        if(args!=null) {
-            rutina = (String) args.getSerializable("RUTINA");
-            Log.i("Argumentos", "RECOGIDOS" );
+        if((args.getSerializable("RUTINA_NOMBRE"))!=null) {
+
+            rutina = (String) args.getSerializable("RUTINA_NOMBRE");
+            Log.i("Argumentos", "RECOGIDOS =" + rutina);
         }else{
             Log.i("Argumentos", "NULOS" );
 
@@ -99,16 +99,33 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
         añadir_ejercicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nombre= et_nombre_ejercicio.getText().toString();
-                series= et_series_ejercicio.getText().toString();
-                repeticiones= et_reps_ejercicio.getText().toString();
-                duracion=et_duracion_ejercicio.getText().toString()+" "+sp_unid_tiempo.getSelectedItem().toString();
-                tipo=sp_tipo_ejercicio.getSelectedItem().toString().toLowerCase();
+                nombre = et_nombre_ejercicio.getText().toString();
+                series = et_series_ejercicio.getText().toString();
+                repeticiones = et_reps_ejercicio.getText().toString();
+                duracion = et_duracion_ejercicio.getText().toString() + " " + sp_unid_tiempo.getSelectedItem().toString();
+                tipo = sp_tipo_ejercicio.getSelectedItem().toString().toLowerCase();
 
-                ejercicio=new Ejercicio(nombre,series,repeticiones,duracion,tipo,rutina);
+                if (nombre.length() < 1) {
+                    Snackbar.make(myView,"Debe introducir un nombre valido", Snackbar.LENGTH_SHORT).show();
+                } else {
 
-                Log.i("Ejercicio creado:", ejercicio.toString());
-                presenter.crearEjercicio(ejercicio);
+                    String id = nombre + rutina;
+                    ejercicio = new Ejercicio(id, nombre, series, repeticiones, duracion, tipo, rutina);
+
+                    Log.i("Ejercicio creado:", ejercicio.toString());
+                    presenter.crearEjercicio(ejercicio);
+
+
+                    fragment = new ListaEjerciciosVista();
+
+                    Bundle args = new Bundle();
+                    args.putSerializable(RUTINA, rutina);
+                    fragment.setArguments(args);
+                    getFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.content_main, fragment, RUTINA)
+                            .addToBackStack(RUTINA).commit();
+                }
             }
         });
 
@@ -116,9 +133,15 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
             @Override
             public void onClick(View view) {
 
-                fragment= new CrearRutinaVista();
-                getFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
+                fragment = new ListaEjerciciosVista();
 
+                Bundle args = new Bundle();
+                args.putSerializable(RUTINA, rutina);
+                fragment.setArguments(args);
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_main, fragment, RUTINA)
+                        .addToBackStack(RUTINA).commit();
             }
         });
     }
@@ -127,7 +150,7 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
         String[] valores_tipo= {"Pierna","Torso", "Brazos","Pecho", "Espalda","Triceps","Biceps",
                 "Hombros","Gluteos","Biceps Femoral","Cuadriceps", "Gemelos"};
 
-        String[] valores_unid_tiempo= {"min","seg", "hor"};
+        String[] valores_unid_tiempo= {"min","seg","hor"};
 
         sp_tipo_ejercicio.setAdapter(new ArrayAdapter<String>
                 (getContext(),R.layout.support_simple_spinner_dropdown_item,valores_tipo));

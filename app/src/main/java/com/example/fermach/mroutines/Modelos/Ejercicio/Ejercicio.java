@@ -9,21 +9,31 @@ import java.sql.Time;
 
 public class Ejercicio implements Serializable {
 
-     String nombre="";
-     String series="0";
-     String repeticiones="0";
-     String tiempo ="0";
-     String tipo;
-     String rutina;
+    private String id;
+    private String nombre="";
+    private String series="0";
+    private String repeticiones="0";
+    private String tiempo ="0";
+    private String tipo;
+    private String rutina;
 
 
-    public Ejercicio(String nombre, String series, String repeticiones, String tiempo, String tipo, String rutina) {
+    public Ejercicio(String id, String nombre, String series, String repeticiones, String tiempo, String tipo, String rutina) {
+        this.id=id;
         this.nombre = nombre;
         this.series = series;
         this.repeticiones = repeticiones;
         this.tiempo = tiempo;
         this.tipo = tipo;
         this.rutina = rutina;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -77,6 +87,7 @@ public class Ejercicio implements Serializable {
     @Override
     public String toString() {
         return "Ejercicio{" +
+                "ID= "+ id+ "\n"+
                 "nombre='" + nombre + '\'' +
                 ", series=" + series +
                 ", repeticiones=" + repeticiones +

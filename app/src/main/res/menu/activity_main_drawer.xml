@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_nueva_rutina"
             android:icon="@drawable/nueva_ic"
             android:title="Agregar Rutina" />
         <item
-            android:id="@+id/nav_nuevo_ejercicio"
-            android:icon="@drawable/nueva_ic"
-            android:title="Agregar Ejercicio" />
-        <item
             android:id="@+id/nav_lista_rutinas"
             android:icon="@drawable/lista_ic"
             android:title="Lista de Rutinas" />
-        <item
-            android:id="@+id/nav_lista_ejercicios"
-            android:icon="@drawable/lista_ic"
-            android:title="Lista de Ejercicios" />
+
+
+    </group>
+
+    <group
+        android:id="@+id/menu_info"
+        android:checkableBehavior="none">
+       <item
+         android:id="@+id/nav_info"
+         android:icon="@drawable/ic_info_outline_black_36dp"
+         android:title="Más información" />
     </group>
 </menu>

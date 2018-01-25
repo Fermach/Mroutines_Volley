@@ -12,6 +12,7 @@ import java.util.List;
 public interface EjerciciosDataSource {
 
         void getEjercicios(CargaEjerciciosCallback callback);
+        void getEjerciciosPorRutina(String rutina, CargaEjerciciosCallback callback);
         void createEjercicio(Ejercicio ejercicio, CreateEjercicioCallback callback);
         void deleteEjercicio(DeleteEjercicioCallback callback);
         void updateEjercicio(UpdateEjercicioCallback callback);
