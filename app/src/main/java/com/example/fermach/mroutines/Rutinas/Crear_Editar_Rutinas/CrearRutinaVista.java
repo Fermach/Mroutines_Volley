@@ -34,7 +34,6 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
     private EditText et_nombre_rutina;
     private Spinner sp_tipo_rutina;
     private Spinner sp_nivel_rutina;
-    CrearRutina_EjerciciosAdapter ejerciciosAdapter;
     private Button añadir_rutina;
     private Button cancelar_rutina;
     private View myView;

@@ -1,11 +1,12 @@
 package com.example.fermach.mroutines.Ejercicios.Listado_Ejercicios;
 
-import android.app.Dialog;
-import android.app.DialogFragment;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,15 +101,10 @@ public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosCon
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 ejercicio= ejercicios.get(position);
-                Bundle args = new Bundle();
-                args.putSerializable(EJERCICIO, ejercicio);
-                ListaEjerciciosDetalle toFragment = new ListaEjerciciosDetalle();
-                toFragment.setArguments(args);
-                getFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content_main, toFragment, EJERCICIO)
-                        .addToBackStack(EJERCICIO).commit();
+                FragmentManager fragmentManager=getFragmentManager();
 
+                DialogFragment dialogFragment= ListaEjerciciosDetalle.newInstance(ejercicio);
+                dialogFragment.show(fragmentManager, "detalle");
             }
         });
     }

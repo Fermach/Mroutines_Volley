@@ -20,13 +20,22 @@ public class ListaEjerciciosDetalle extends DialogFragment {
 
     private Ejercicio ejercicio;
 
+    public static ListaEjerciciosDetalle newInstance(Ejercicio ejercicio) {
+        ListaEjerciciosDetalle fragment = new ListaEjerciciosDetalle();
+        Bundle args = new Bundle();
+        args.putSerializable("EJERCICIO", ejercicio);
+
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Bundle args = getArguments();
 
-        ejercicio =(Ejercicio) args
+
+        ejercicio =(Ejercicio) getArguments()
                 .getSerializable("EJERCICIO");
 
         Log.i("Ejercicio en Detalle: ", ejercicio.toString());

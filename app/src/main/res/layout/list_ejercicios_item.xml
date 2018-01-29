@@ -5,6 +5,7 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:id="@+id/item_ejercicio"
     android:orientation="horizontal"
+    android:background="@drawable/papel3"
     android:layout_width="match_parent"
     android:layout_height="90sp"
     >
@@ -19,7 +20,7 @@
             android:layout_width="416dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10sp"
-            android:layout_marginTop="15sp"
+            android:layout_marginTop="10sp"
             android:layout_weight="1"
             android:text="@string/nombre"
             android:textSize="18sp"
@@ -31,9 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10sp"
-            android:layout_marginTop="18sp"
-            android:layout_marginBottom="10sp"
+            android:layout_marginBottom="18sp"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:text="@string/tipo"
             android:textSize="16sp" />
     </LinearLayout>
