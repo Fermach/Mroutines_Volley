@@ -4,6 +4,7 @@ package com.example.fermach.mroutines.Ejercicios.Listado_Ejercicios;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,7 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.fermach.mroutines.Ejercicios.Crear_Editar_Ejercicios.CrearEjercicioVista;
+import com.example.fermach.mroutines.Ejercicios.Crear_Ejercicios.CrearEjercicioVista;
 import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
 import com.example.fermach.mroutines.R;
 
@@ -30,6 +31,7 @@ public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosCon
     private ListaEjerciciosContract.Presenter presenter;
     private ListaEjerciciosAdapter ejerciciosAdapter;
     private ListView list_ejercicios;
+    private TextView num_ejercicios;
     private View myView;
     private TextView rutina;
     private FloatingActionButton fab_ejercicios;
@@ -65,6 +67,7 @@ public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosCon
 
     public void inicializarVistas(){
         list_ejercicios=myView.findViewById(R.id.list_ejercicios);
+        num_ejercicios=myView.findViewById(R.id.num_Ejercicios_lista);
         fab_ejercicios=myView.findViewById(R.id.fab_ejercicios);
         rutina=myView.findViewById(R.id.rutina_enEjercicios);
         rutina.setText(rutina_nombre);
@@ -107,13 +110,30 @@ public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosCon
                 dialogFragment.show(fragmentManager, "detalle");
             }
         });
+
+        list_ejercicios.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+                ejercicio= ejercicios.get(position);
+                FragmentManager fragmentManager=getFragmentManager();
+
+                DialogFragment dialogFragment= ListaEjerciciosMenuLClick.newInstance( ejercicio);
+                dialogFragment.show(fragmentManager, "menuEjercicios");
+
+                return true;
+            }
+        });
     }
 
 
     @Override
     public void mostrarError() {
 
+    }
 
+    @Override
+    public void mostrarEjercicios(List<Ejercicio> ejercicios) {
+        num_ejercicios.setText("Numero de ejercicios: "+ ejercicios.size());
     }
 
 }

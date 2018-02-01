@@ -57,13 +57,34 @@ public class EjerciciosRepository implements EjerciciosDataSource{
     }
 
     @Override
-    public void deleteEjercicio(DeleteEjercicioCallback callback) {
+    public void deleteEjercicio(String id_ejercicio, DeleteEjercicioCallback callback) {
+        Log.i("Ejer a borrar REPO", id_ejercicio);
+        Log.i("LEjer a borrar REPO", listaEjerciciosPorRutina.toString());
+
+       /* for(int i=0; i< listaEjerciciosPorRutina.size();i++){
+
+           if(id_ejercicio.equals(listaEjerciciosPorRutina.get(i).getId())){
+
+               listaEjerciciosPorRutina.remove(i);
+               callback.onEjercicioEliminado(listaEjerciciosPorRutina);
+               Log.i("Ejercicio borrado: ", id_ejercicio);
+           }
+       }
+       */
+       callback.onEjercicioEliminado();
+    }
+
+    @Override
+    public void deleteEjercicios(String nombre_rutina, DeleteEjerciciosCallback callback) {
 
     }
 
     @Override
-    public void updateEjercicio(UpdateEjercicioCallback callback) {
+    public void updateEjercicio(String id_ejercicio, Ejercicio ejercicio, UpdateEjercicioCallback callback) {
 
+        Log.i("Update ejercicio nombre", id_ejercicio);
+        Log.i("Update ejercicio:", id_ejercicio);
+        callback.onEjercicioActualizado(id_ejercicio);
     }
 
     @Override

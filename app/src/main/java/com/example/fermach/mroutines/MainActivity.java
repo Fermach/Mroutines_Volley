@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.example.fermach.mroutines.Rutinas.Crear_Editar_Rutinas.CrearRutinaVista;
+import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaVista;
 import com.example.fermach.mroutines.Rutinas.Listado_Rutinas.ListaRutinasVista;
 
 /**

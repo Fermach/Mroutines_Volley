@@ -11,8 +11,8 @@ public interface RutinasDataSource {
 
         void getRutinas(CargaRutinasCallback callback);
         void createRutina(Rutina rutina, CreateRutinaCallback callback);
-        void deleteRutina(DeleteRutinaCallback callback);
-        void updateRutina(UpdateRutinaCallback callback);
+        void deleteRutina(String rutina_nombre, DeleteRutinaCallback callback);
+        void updateRutina(String rutina_nombre, Rutina rutina, UpdateRutinaCallback callback);
         void getRutina(int posicion, CargaRutinaCallback callback);
 
         interface CargaRutinasCallback {
@@ -28,11 +28,11 @@ public interface RutinasDataSource {
             void onRutinaCreadaError();
         }
         interface DeleteRutinaCallback {
-            void onRutinaEliminada(List<Rutina> rutinas);
+            void onRutinaEliminada();
             void onRutinaEliminadaError();
          }
         interface UpdateRutinaCallback {
-            void onRutinaActualizada(Rutina rutina);
+            void onRutinaActualizada(String rutina_nombre);
             void onRutinaActualizadaError();
         }
 }

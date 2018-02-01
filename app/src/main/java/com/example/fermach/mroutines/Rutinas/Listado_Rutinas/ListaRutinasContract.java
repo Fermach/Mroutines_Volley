@@ -15,8 +15,10 @@ public interface ListaRutinasContract {
         void mostrarError();
         void poblarListaRutinas(List<Rutina> rutinas);
         void activarListaClickable(List<Rutina> rutinas);
+        void mostrarRutinas(List<Rutina> rutinas);
     }
     interface Presenter {
         void cargaRutinas();
+        void borrarRutina(String nombre_rutina);
     }
 }

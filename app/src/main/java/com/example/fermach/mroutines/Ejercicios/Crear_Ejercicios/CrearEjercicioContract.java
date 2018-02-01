@@ -1,7 +1,6 @@
-package com.example.fermach.mroutines.Ejercicios.Crear_Editar_Ejercicios;
+package com.example.fermach.mroutines.Ejercicios.Crear_Ejercicios;
 
 import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
-import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 
 import java.util.List;
 

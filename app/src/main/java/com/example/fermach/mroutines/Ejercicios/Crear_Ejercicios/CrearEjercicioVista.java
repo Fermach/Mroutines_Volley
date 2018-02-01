@@ -1,4 +1,4 @@
-package com.example.fermach.mroutines.Ejercicios.Crear_Editar_Ejercicios;
+package com.example.fermach.mroutines.Ejercicios.Crear_Ejercicios;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,7 +17,6 @@ import android.widget.TextView;
 import com.example.fermach.mroutines.Ejercicios.Listado_Ejercicios.ListaEjerciciosVista;
 import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
 import com.example.fermach.mroutines.R;
-import com.example.fermach.mroutines.Rutinas.Crear_Editar_Rutinas.CrearRutinaVista;
 
 import java.util.List;
 

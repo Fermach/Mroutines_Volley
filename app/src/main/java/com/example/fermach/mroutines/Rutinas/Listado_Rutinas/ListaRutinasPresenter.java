@@ -1,5 +1,7 @@
 package com.example.fermach.mroutines.Rutinas.Listado_Rutinas;
 
+import com.example.fermach.mroutines.Modelos.Ejercicio.EjerciciosDataSource;
+import com.example.fermach.mroutines.Modelos.Ejercicio.EjerciciosRepository;
 import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 import com.example.fermach.mroutines.Modelos.Rutina.RutinasDataSource;
 import com.example.fermach.mroutines.Modelos.Rutina.RutinasRepository;
@@ -15,6 +17,9 @@ public class ListaRutinasPresenter implements ListaRutinasContract.Presenter{
     private ListaRutinasContract.View rutinasView;
 
 
+    public ListaRutinasPresenter() {
+        this.rutinasRepository = RutinasRepository.getInstance();
+    }
 
     public ListaRutinasPresenter(ListaRutinasContract.View rutinasView) {
         this.rutinasView = rutinasView;
@@ -28,6 +33,7 @@ public class ListaRutinasPresenter implements ListaRutinasContract.Presenter{
              public void onRutinasCargadas(List<Rutina> rutinas) {
                  rutinasView.poblarListaRutinas(rutinas);
                  rutinasView.activarListaClickable(rutinas);
+                 rutinasView.mostrarRutinas(rutinas);
              }
 
              @Override
@@ -36,6 +42,21 @@ public class ListaRutinasPresenter implements ListaRutinasContract.Presenter{
              }
          });
 
+    }
+
+    @Override
+    public void borrarRutina(String nombre_rutina) {
+        rutinasRepository.deleteRutina(nombre_rutina, new RutinasDataSource.DeleteRutinaCallback() {
+            @Override
+            public void onRutinaEliminada() {
+
+            }
+
+            @Override
+            public void onRutinaEliminadaError() {
+
+            }
+        });
     }
 
 

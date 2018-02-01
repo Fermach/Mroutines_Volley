@@ -14,8 +14,9 @@ public interface EjerciciosDataSource {
         void getEjercicios(CargaEjerciciosCallback callback);
         void getEjerciciosPorRutina(String rutina, CargaEjerciciosCallback callback);
         void createEjercicio(Ejercicio ejercicio, CreateEjercicioCallback callback);
-        void deleteEjercicio(DeleteEjercicioCallback callback);
-        void updateEjercicio(UpdateEjercicioCallback callback);
+        void deleteEjercicio(String id_ejercicio, DeleteEjercicioCallback callback);
+        void deleteEjercicios(String nombre_rutina, DeleteEjerciciosCallback callback);
+        void updateEjercicio(String id_ejercicio, Ejercicio ejercicio, UpdateEjercicioCallback callback);
         void getEjercicio(int posicion, CargaEjercicioCallback callback);
 
         interface CargaEjerciciosCallback {
@@ -31,11 +32,15 @@ public interface EjerciciosDataSource {
             void onEjercicioCreadoError();
         }
         interface DeleteEjercicioCallback {
-            void onEjercicioEliminado(List<Ejercicio> ejercicios);
+            void onEjercicioEliminado();
             void onEjercicioEliminadoError();
          }
+        interface DeleteEjerciciosCallback {
+            void onEjerciciosEliminado();
+            void onEjerciciosEliminadoError();
+         }
         interface UpdateEjercicioCallback {
-            void onEjercicioActualizado(Ejercicio ejercicio);
+            void onEjercicioActualizado(String id_ejercicio);
             void onEjercicioActualizadoError();
         }
 }

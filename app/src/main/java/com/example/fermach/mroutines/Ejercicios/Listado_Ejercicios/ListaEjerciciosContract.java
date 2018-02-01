@@ -13,11 +13,13 @@ public interface ListaEjerciciosContract {
 
     interface View {
         void mostrarError();
+        void mostrarEjercicios(List<Ejercicio> ejercicios);
         void poblarListaEjercicios(List<Ejercicio> ejercicios);
         void activarListaClickable(List<Ejercicio> ejercicios);
 
     }
     interface Presenter {
         void cargaEjercicios(String rutina_nombre);
+        void borrarEjercicio(String id_ejercicio);
     }
 }

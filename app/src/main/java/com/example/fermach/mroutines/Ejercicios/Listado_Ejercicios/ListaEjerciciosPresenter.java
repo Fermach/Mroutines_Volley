@@ -1,5 +1,10 @@
 package com.example.fermach.mroutines.Ejercicios.Listado_Ejercicios;
 
+import android.support.design.widget.Snackbar;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.example.fermach.mroutines.App;
 import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
 import com.example.fermach.mroutines.Modelos.Ejercicio.EjerciciosDataSource;
 import com.example.fermach.mroutines.Modelos.Ejercicio.EjerciciosRepository;
@@ -25,6 +30,10 @@ public class ListaEjerciciosPresenter implements ListaEjerciciosContract.Present
         this.ejerciciosRepository = EjerciciosRepository.getInstance();
     }
 
+    public ListaEjerciciosPresenter() {
+        this.ejerciciosRepository = EjerciciosRepository.getInstance();
+    }
+
     @Override
     public void cargaEjercicios(String rutina_nombre) {
          ejerciciosRepository.getEjerciciosPorRutina(rutina_nombre, new EjerciciosDataSource.CargaEjerciciosCallback() {
@@ -32,6 +41,7 @@ public class ListaEjerciciosPresenter implements ListaEjerciciosContract.Present
              public void onEjerciciosCargados(List<Ejercicio> ejercicios) {
              ejerciciosView.poblarListaEjercicios(ejercicios);
              ejerciciosView.activarListaClickable(ejercicios);
+             ejerciciosView.mostrarEjercicios(ejercicios);
              }
 
              @Override
@@ -40,6 +50,22 @@ public class ListaEjerciciosPresenter implements ListaEjerciciosContract.Present
              }
          });
 
+    }
+
+    @Override
+    public void borrarEjercicio(String ejercicio_id) {
+         Log.i("Ejercicio a borrar", ejercicio_id);
+         ejerciciosRepository.deleteEjercicio(ejercicio_id, new EjerciciosDataSource.DeleteEjercicioCallback() {
+             @Override
+             public void onEjercicioEliminado() {
+
+             }
+
+             @Override
+             public void onEjercicioEliminadoError() {
+
+             }
+         });
     }
 
 }

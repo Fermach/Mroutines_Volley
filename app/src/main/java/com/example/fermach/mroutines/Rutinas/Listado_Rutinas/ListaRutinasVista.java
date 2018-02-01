@@ -3,17 +3,22 @@ package com.example.fermach.mroutines.Rutinas.Listado_Rutinas;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.fermach.mroutines.Ejercicios.Listado_Ejercicios.ListaEjerciciosVista;
 import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 import com.example.fermach.mroutines.R;
-import com.example.fermach.mroutines.Rutinas.Crear_Editar_Rutinas.CrearRutinaVista;
+import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaVista;
 import java.util.List;
 
 
@@ -26,10 +31,12 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
     private ListaRutinasContract.Presenter presenter;
     private ListaRutinasAdapter rutinasAdapter;
     private ListView list_rutinas;
+    private TextView num_rutinas;
     private View myView;
     private FloatingActionButton fab_rutinas;
     private Fragment fragment;
     private Rutina rutina;
+    private boolean rutinaActualizada;
     private final String RUTINA ="RUTINA";
 
     public ListaRutinasVista() {
@@ -41,12 +48,14 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
         myView = inflater.inflate(R.layout.lista_rutinas, container, false);
 
         fragment = new ListaRutinasVista();
+        rutinaActualizada=false;
 
         inicializarVistas();
         activarControladores();
 
         presenter=new ListaRutinasPresenter(this);
         presenter.cargaRutinas();
+
 
         return myView;
     }
@@ -55,6 +64,7 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
     public void inicializarVistas(){
         list_rutinas=myView.findViewById(R.id.list_rutinas);
         fab_rutinas=myView.findViewById(R.id.fab_rutinas);
+        num_rutinas=myView.findViewById(R.id.num_Rutinas_lista);
     }
 
     public void activarControladores() {
@@ -64,6 +74,7 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
             public void onClick(View view) {
                 fragment = new CrearRutinaVista();
                 getFragmentManager().beginTransaction().replace(R.id.content_main, fragment ).commit();
+
             }
         });
 
@@ -94,6 +105,25 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
                         .addToBackStack(RUTINA).commit();
             }
         });
+
+        list_rutinas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+                rutina= rutinas.get(position);
+                FragmentManager fragmentManager=getFragmentManager();
+
+                DialogFragment dialogFragment= ListaRutinasMenuLClick.newInstance(rutina);
+                dialogFragment.show(fragmentManager, "menuRutinas");
+
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public void mostrarRutinas( List<Rutina> rutinas) {
+        num_rutinas.setText("Numero de rutinas: "+ rutinas.size());
+
     }
 
 
@@ -102,4 +132,6 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
 
 
     }
+
+
 }

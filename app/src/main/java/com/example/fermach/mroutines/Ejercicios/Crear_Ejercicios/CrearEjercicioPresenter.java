@@ -1,4 +1,4 @@
-package com.example.fermach.mroutines.Ejercicios.Crear_Editar_Ejercicios;
+package com.example.fermach.mroutines.Ejercicios.Crear_Ejercicios;
 
 import android.util.Log;
 

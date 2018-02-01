@@ -28,4 +28,10 @@
     <string name="musculación">Musculación</string>
     <string name="cardio">Cardiovascular</string>
     <string name="otro">Otro</string>
+    <string name="edicion_rutina">Editar Rutina</string>
+    <string name="borrar_rutina">Borrar Rutina</string>
+    <string name="borrar_ejercicio">Borrar Ejercicio</string>
+    <string name="edit_ejercicio">Editar Ejercicio</string>
+    <string name="editar_ejercicio">Editar Ejercicio</string>
+    <string name="actualizar_ejercicio">Actualizar ejercicio</string>
 </resources>

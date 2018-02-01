@@ -34,7 +34,6 @@ public class ListaEjerciciosDetalle extends DialogFragment {
         super.onCreate(savedInstanceState);
 
 
-
         ejercicio =(Ejercicio) getArguments()
                 .getSerializable("EJERCICIO");
 

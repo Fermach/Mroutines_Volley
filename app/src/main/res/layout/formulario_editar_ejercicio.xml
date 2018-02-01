@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/papel2"
-    android:id="@+id/area_formulario_ejercicio"
+    android:id="@+id/area_editarEjercicio"
     android:weightSum="1"
     >
     <LinearLayout
@@ -20,19 +20,9 @@
             android:layout_marginTop="5sp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/nuevo_ejercicio"
+            android:text="@string/editar_ejercicio"
             android:textSize="20sp" />
 
-        <TextView
-            android:textColor="@android:color/black"
-            android:layout_marginTop="5sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/num_ejercicios"
-            android:id="@+id/num_Ejercicios"
-            android:textSize="10sp"
-            android:layout_weight="1"
-            />
     </LinearLayout>
 
     <LinearLayout
@@ -53,7 +43,7 @@
         android:layout_marginRight="17sp"
         android:layout_weight="9.38">
         <EditText
-            android:id="@+id/editText_nombreEjercicio"
+            android:id="@+id/editText_nombreEjercicio_editar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
@@ -78,7 +68,7 @@
             android:layout_marginRight="17sp"
             android:layout_weight="9.38">
             <EditText
-                android:id="@+id/editText_seriesEjercicio"
+                android:id="@+id/editText_seriesEjercicio_editar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -104,7 +94,7 @@
             android:layout_marginRight="17sp"
             android:layout_weight="9.38">
             <EditText
-                android:id="@+id/editText_repesEjercicio"
+                android:id="@+id/editText_repesEjercicio_editar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/intr_repes"
@@ -129,7 +119,7 @@
             app:errorEnabled="true">
 
             <EditText
-                android:id="@+id/editText_tiempoEjercicio"
+                android:id="@+id/editText_tiempoEjercicio_editar"
                 android:layout_width="255dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/intr_tiempo"
@@ -140,7 +130,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <Spinner
-            android:id="@+id/spinner_unidadesTiempo"
+            android:id="@+id/spinner_unidadesTiempo_editar"
             android:layout_width="95dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -170,7 +160,7 @@
             android:textSize="15sp" />
 
         <Spinner
-            android:id="@+id/spinner_tipoEjercicio"
+            android:id="@+id/spinner_tipoEjercicio_editar"
             android:layout_width="348dp"
             android:textColor="@android:color/black"
             android:layout_height="wrap_content"
@@ -191,18 +181,18 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_cancelar_formEjer"
+            android:id="@+id/btn_cancelar_formEjer_editar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/cancelar" />
 
         <Button
-            android:id="@+id/btn_crear_formEjer"
+            android:id="@+id/btn_crear_formEjer_editar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/crear_ejercicio" />
+            android:text="@string/actualizar_ejercicio" />
 
 
     </LinearLayout>
