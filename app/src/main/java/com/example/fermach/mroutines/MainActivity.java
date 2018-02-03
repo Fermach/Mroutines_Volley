@@ -2,6 +2,7 @@ package com.example.fermach.mroutines;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PersistableBundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        fragment= new ListaRutinasVista();
+        fragment= new Pantalla_temporal();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -51,6 +52,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        new Handler().postDelayed(new Runnable(){
+            public void run(){
+                // Cuando pasen los 3 segundos, pasamos a la actividad principal de la aplicación
+                fragment = new ListaRutinasVista();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
+            };
+        }, 4000);
     }
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
@@ -89,11 +98,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
          else if (id == R.id.nav_lista_rutinas) {
             fragment= new ListaRutinasVista();
             itemSeleccionado=true;
+        }else if (id == R.id.nav_info) {
+            fragment= new Pantalla_info();
+            itemSeleccionado=true;
         }
 
         if(itemSeleccionado==true){
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
         }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

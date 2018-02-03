@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/tierra"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:layout_marginTop="10sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10sp"
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="@android:color/black"/>
+
+    <TextView
+        android:layout_marginTop="6sp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/descripcionT"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginTop="10sp"
+        android:text="@string/descripcion"/>
+
+    <TextView
+        android:layout_marginTop="13sp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/funcionamiento"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginTop="10sp"
+        android:text="@string/funcionamiento_MRoutines"/>
+
+    <TextView
+        android:layout_marginTop="13sp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/manualT"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginTop="10sp"
+        android:text="@string/manual"/>
+
+    <TextView
+        android:layout_marginTop="13sp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/otrosDetallesT"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginTop="10sp"
+        android:text="@string/otrosDetalles"/>
+
+</LinearLayout>
+</ScrollView>

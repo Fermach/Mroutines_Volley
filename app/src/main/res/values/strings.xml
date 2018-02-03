@@ -34,4 +34,41 @@
     <string name="edit_ejercicio">Editar Ejercicio</string>
     <string name="editar_ejercicio">Editar Ejercicio</string>
     <string name="actualizar_ejercicio">Actualizar ejercicio</string>
+    <string name="instituto">www.iesvirgendelcarmen.com</string>
+    <string name="descripcion">Esta es una Aplicación nativa para Android
+        que nos permite gestionar nuestras rutinas deportivas,con una interfaz intuitiba
+        y facil de usar.
+       </string>
+    <string name="funcionamiento_MRoutines">El funcionamiento de MRoutines está
+        basado en el uso de un servicio REST contra una base de datos Mongo.
+
+        Su codigo está basado en el uso de los patrones MVP y Repositorio.</string>
+    <string name="descripcionT">- Descripción:</string>
+    <string name="funcionamiento">- ¿Como se ha hecho MRoutines?</string>
+    <string name="manualT">- ¿Como funciona la aplicación?</string>
+    <string name="manual">
+        - Al iniciar la aplicación se nos muestra el listado con nuestras rutinas,
+          para añadir nuevas rutinas solo tenemos que pulsar sobre el icono con el simbolo
+          de "+" que hay situado abajo a la derecha.\n\n
+
+        - Para editar o borrar una rutina debemos de mantener pulsada nuestra rutina, lo cuál nos abrira el
+          menu de edición y borrado..\n\n
+
+        - Si queremos ver los ejercicios de nuestra rutina solo tenemos que pulsar sobre esta
+          y nos llevará a la pantalla para ver nuestros ejercicios..\n\n
+
+        - Para modificar, borrar o añadir ejercicios el mecanismo es el mismo que con la rutinas..\n\n
+
+        - Para ver el detalle de nuestro ejercicio solo tenemos que pulsar sobre este.\n
+
+    </string>
+    <string name="otrosDetallesT">- Otros detalles.</string>
+    <string name="otrosDetalles">
+        *Autor: Fermach\n
+        *Versión: 1.0.\n
+        *Corro: f.manu_97@hotmail.com\n
+
+    </string>
+
+
 </resources>
