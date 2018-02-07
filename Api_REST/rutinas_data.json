@@ -1,0 +1,5 @@
+[{nombre: "Torso_fuerza", tipo:"musculacion", nivel:"alto"},
+ {nombre: "Torso_hipertrofia", tipo:"musculacion", nivel:"alto"},
+ {nombre: "Pierna_fuerza", tipo:"musculacion", nivel:"alto"},
+ {nombre: "Pierna_hipertrofia", tipo:"musculacion", nivel:"alto"},
+ {nombre: "Entrenamiento_saco", tipo:"cardiovascular", nivel:"alto"}]
