@@ -24,7 +24,7 @@ public interface RutinasDataSource {
             void onRutinaCargadaError();
         }
         interface CreateRutinaCallback {
-            void onRutinaCreada( List<Rutina> rutinas);
+            void onRutinaCreada();
             void onRutinaCreadaError();
         }
         interface DeleteRutinaCallback {

@@ -1,5 +1,7 @@
 package com.example.fermach.mroutines.Rutinas.Listado_Rutinas;
 
+import android.util.Log;
+
 import com.example.fermach.mroutines.Modelos.Ejercicio.EjerciciosDataSource;
 import com.example.fermach.mroutines.Modelos.Ejercicio.EjerciciosRepository;
 import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
@@ -28,9 +30,11 @@ public class ListaRutinasPresenter implements ListaRutinasContract.Presenter{
 
     @Override
     public void cargaRutinas() {
+        Log.i("Presenter", "Presenter");
          rutinasRepository.getRutinas(new RutinasDataSource.CargaRutinasCallback() {
              @Override
              public void onRutinasCargadas(List<Rutina> rutinas) {
+                 Log.i("RUUUUTTIINAASS", rutinas.toString());
                  rutinasView.poblarListaRutinas(rutinas);
                  rutinasView.activarListaClickable(rutinas);
                  rutinasView.mostrarRutinas(rutinas);
@@ -49,11 +53,14 @@ public class ListaRutinasPresenter implements ListaRutinasContract.Presenter{
         rutinasRepository.deleteRutina(nombre_rutina, new RutinasDataSource.DeleteRutinaCallback() {
             @Override
             public void onRutinaEliminada() {
+                Log.i("REpositoryLista_Rutinas", "Se ha eliminado la rutina ");
 
+                rutinasView.onRutinaEliminada();
             }
 
             @Override
             public void onRutinaEliminadaError() {
+                Log.i("REpositoryLista_Rutinas", "No se ha podido eliminar la rutina ");
 
             }
         });

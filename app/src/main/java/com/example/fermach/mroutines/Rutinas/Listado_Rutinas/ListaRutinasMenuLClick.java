@@ -30,6 +30,9 @@ public class ListaRutinasMenuLClick extends DialogFragment {
     private Rutina rutina;
     private ListaRutinasContract.Presenter presenter;
     private final String RUTINA_NOMBRE ="RUTINA_NOMBRE";
+    private final String RUTINA_ELIMINADA ="RUTINA_ELIMINADA";
+    private final String RUTINA_ELIMINADA_NOMBRE ="RUTINA_ELIMINADA_NOMBRE";
+
 
     public static ListaRutinasMenuLClick newInstance(Rutina rutina) {
 
@@ -71,9 +74,17 @@ public class ListaRutinasMenuLClick extends DialogFragment {
                 myBuild.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        presenter.borrarRutina(rutina.getNombre());
                         dialogInterface.cancel();
                         getDialog().dismiss();
+                        Bundle args_eli = new Bundle();
+                        args_eli.putSerializable(RUTINA_ELIMINADA_NOMBRE,rutina.getNombre());
+                        args_eli.putSerializable(RUTINA_ELIMINADA, true);
+                        Fragment toFragment = new ListaRutinasVista();
+                        toFragment.setArguments(args_eli);
+                        getFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.content_main, toFragment)
+                                .addToBackStack(RUTINA_ELIMINADA).addToBackStack(RUTINA_ELIMINADA_NOMBRE).commit();
                     }
                 });
                 myBuild.setNegativeButton("No", new DialogInterface.OnClickListener() {

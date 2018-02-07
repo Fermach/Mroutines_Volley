@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/nombre_rutina_lista"
             android:layout_alignStart="@+id/tipo_rutina_lista"
+            android:layout_marginTop="8sp"
             android:text="@string/nombre"
             android:textColor="@color/brown1"
             android:textSize="20sp" />
@@ -34,19 +35,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:textColor="@color/brown1"
             android:layout_marginTop="6sp"
             android:layout_toEndOf="@+id/nombre_textr"
             android:text="@string/rutina"
-            android:textSize="25sp"
+            android:textColor="@color/brown1"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1sp"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10sp"
+            android:layout_alignTop="@+id/tipo_rutina_lista"
             android:background="@color/brown1" />
 
         <TextView
@@ -57,8 +57,8 @@
             android:layout_below="@+id/nombre_textr"
             android:layout_marginLeft="7sp"
             android:layout_marginTop="23dp"
-            android:textColor="@color/brown1"
             android:text="@string/tipo"
+            android:textColor="@color/brown1"
             android:textSize="15sp" />
 
         <TextView

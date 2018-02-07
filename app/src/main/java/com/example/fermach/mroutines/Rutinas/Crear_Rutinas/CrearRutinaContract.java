@@ -11,7 +11,6 @@ import java.util.List;
 public interface CrearRutinaContract {
 
     interface View {
-        void mostrarRutinas(List<Rutina> rutinas);
         void mostrarError();
 
     }

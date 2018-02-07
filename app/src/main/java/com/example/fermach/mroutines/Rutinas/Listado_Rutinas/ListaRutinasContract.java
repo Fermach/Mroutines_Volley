@@ -12,7 +12,7 @@ import java.util.List;
 public interface ListaRutinasContract {
 
     interface View {
-        void mostrarError();
+        void onRutinaEliminada();
         void poblarListaRutinas(List<Rutina> rutinas);
         void activarListaClickable(List<Rutina> rutinas);
         void mostrarRutinas(List<Rutina> rutinas);

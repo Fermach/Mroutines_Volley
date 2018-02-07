@@ -119,11 +119,6 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
 
 
     @Override
-    public void mostrarRutinas(List<Rutina> rutinas) {
-        num_rutinas.setText("Numero de rutinas: "+ rutinas.size());
-    }
-
-    @Override
     public void mostrarError() {
 
 

@@ -44,10 +44,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        //carga el fragmento que había al girar la pantalla(si es que lo hay)
-        if(savedInstanceState!=null) {
-            fragment= getSupportFragmentManager().getFragment(savedInstanceState, "MAIN_FRAGMENT");
-        }
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -112,9 +108,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        getSupportFragmentManager().putFragment(outState,MAIN_FRAGMENT,fragment);
-    }
+
 }

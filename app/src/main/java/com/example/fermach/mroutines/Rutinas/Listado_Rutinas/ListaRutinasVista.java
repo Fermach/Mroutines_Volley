@@ -37,6 +37,8 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
     private Fragment fragment;
     private Rutina rutina;
     private boolean rutinaActualizada;
+    private boolean rutinaEliminada;
+    String rutinaNombreEliminar;
     private final String RUTINA ="RUTINA";
 
     public ListaRutinasVista() {
@@ -49,12 +51,29 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
 
         fragment = new ListaRutinasVista();
         rutinaActualizada=false;
+        rutinaEliminada=false;
+
 
         inicializarVistas();
         activarControladores();
 
         presenter=new ListaRutinasPresenter(this);
         presenter.cargaRutinas();
+
+
+        Bundle args = getArguments();
+
+        if(args!=null) {
+
+            rutinaEliminada = (Boolean) args.getSerializable("RUTINA_ELIMINADA");
+            rutinaNombreEliminar=(String) args.getSerializable("RUTINA_ELIMINADA_NOMBRE");
+            Log.i("Argumentos", "RECOGIDOS =" + rutinaEliminada);
+
+            presenter.borrarRutina(rutinaNombreEliminar);
+        }else{
+            Log.i("Argumentos", "NULOS" );
+
+        }
 
 
         return myView;
@@ -128,7 +147,8 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
 
 
     @Override
-    public void mostrarError() {
+    public void onRutinaEliminada() {
+        presenter.cargaRutinas();
 
 
     }

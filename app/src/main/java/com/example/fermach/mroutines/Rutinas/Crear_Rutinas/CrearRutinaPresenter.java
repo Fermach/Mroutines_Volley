@@ -29,7 +29,7 @@ public class CrearRutinaPresenter implements CrearRutinaContract.Presenter{
          rutinasRepository.getRutinas(new RutinasDataSource.CargaRutinasCallback() {
              @Override
              public void onRutinasCargadas(List<Rutina> rutinas) {
-                 rutinasView.mostrarRutinas(rutinas);
+
              }
 
              @Override
@@ -48,13 +48,13 @@ public class CrearRutinaPresenter implements CrearRutinaContract.Presenter{
         Log.i("Mi rutina creada:", rutina.toString());
         rutinasRepository.createRutina(miRutina, new RutinasDataSource.CreateRutinaCallback() {
             @Override
-            public void onRutinaCreada(List<Rutina> rutinas) {
-                rutinasView.mostrarRutinas(rutinas);
+            public void onRutinaCreada() {
+                Log.i("PresenterCrear_rutina", "Rutina creada correctamentee");
             }
 
             @Override
             public void onRutinaCreadaError() {
-
+                Log.i("PresenterCrear_rutina", "No se pudo crear la rutina");
             }
         });
     }
