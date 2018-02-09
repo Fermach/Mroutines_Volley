@@ -118,7 +118,7 @@ public class EjerciciosAPI implements EjerciciosDataSource {
                     @Override
                     public void onResponse(String response) {
                         // response
-                        Log.i("Respuesta_DELET_Rutinas", response);
+                        Log.i("Respuesta_DELET_Ejercicios", response);
                         callback.onEjercicioEliminado();
                     }
                 },
@@ -127,7 +127,7 @@ public class EjerciciosAPI implements EjerciciosDataSource {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // error.
-                        Log.i("Respuesta_DELET_Rutinas", "Error");
+                        Log.i("Respuesta_DELET_Ejercicios", "Error");
                         callback.onEjercicioEliminadoError();
                     }
                 }
@@ -144,7 +144,7 @@ public class EjerciciosAPI implements EjerciciosDataSource {
                     @Override
                     public void onResponse(String response) {
                         // response
-                        Log.i("Respuesta_DELET_Rutinas", response);
+                        Log.i("Respuesta_DELET_EjercR", response);
                         callback.onEjerciciosEliminados();
                     }
                 },
@@ -153,7 +153,7 @@ public class EjerciciosAPI implements EjerciciosDataSource {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // error.
-                        Log.i("Respuesta_DELET_Rutinas", "Error");
+                        Log.i("Respuesta_DELET_EjercR", "Error");
                         callback.onEjerciciosEliminadosError();
                     }
                 }
