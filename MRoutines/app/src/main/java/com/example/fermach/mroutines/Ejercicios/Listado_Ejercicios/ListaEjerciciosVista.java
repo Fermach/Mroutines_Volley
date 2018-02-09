@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,7 @@ public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosCon
     private final String EJERCICIO="EJERCICIO";
     private final String RUTINA_NOMBRE="RUTINA_NOMBRE";
     private String rutina_nombre;
+    private String id_ejercicio_eliminar;
 
     public ListaEjerciciosVista() {
     }
@@ -49,18 +51,28 @@ public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosCon
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.lista_ejercicios, container, false);
 
+        id_ejercicio_eliminar=null;
         fragment = new ListaEjerciciosVista();
 
         Bundle args = getArguments();
         rutina_nombre =(String) args
                 .getSerializable("RUTINA");
 
+        id_ejercicio_eliminar=(String)
+                args.getSerializable("ID_EJERCICIO_A_ELIMINAR");
+        Log.i("Argumentos01", "RECOGIDOS =" + id_ejercicio_eliminar);
+
+
         inicializarVistas();
         activarControladores();
 
         presenter=new ListaEjerciciosPresenter(this);
         presenter.cargaEjercicios(rutina_nombre);
+        if(id_ejercicio_eliminar!=null){
+            Log.i("Argumentos02", "RECOGIDOS =" + id_ejercicio_eliminar);
+            presenter.borrarEjercicio(id_ejercicio_eliminar);
 
+        }
         return myView;
     }
 
@@ -117,7 +129,7 @@ public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosCon
                 ejercicio= ejercicios.get(position);
                 FragmentManager fragmentManager=getFragmentManager();
 
-                DialogFragment dialogFragment= ListaEjerciciosMenuLClick.newInstance( ejercicio);
+                DialogFragment dialogFragment= ListaEjerciciosMenuLClick.newInstance(rutina_nombre, ejercicio);
                 dialogFragment.show(fragmentManager, "menuEjercicios");
 
                 return true;
@@ -127,8 +139,8 @@ public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosCon
 
 
     @Override
-    public void mostrarError() {
-
+    public void onEjercicioEliminado() {
+          presenter.cargaEjercicios(rutina_nombre);
     }
 
     @Override

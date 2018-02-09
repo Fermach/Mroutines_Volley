@@ -19,6 +19,7 @@ import com.example.fermach.mroutines.Ejercicios.Editar_Ejercicios.EditarEjercici
 import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
 import com.example.fermach.mroutines.R;
 import com.example.fermach.mroutines.Rutinas.Editar_Rutinas.EditarRutinaVista;
+import com.example.fermach.mroutines.Rutinas.Listado_Rutinas.ListaRutinasVista;
 
 import java.io.Serializable;
 import java.util.List;
@@ -30,17 +31,23 @@ import java.util.List;
 public class ListaEjerciciosMenuLClick extends DialogFragment {
 
     private Ejercicio ejercicio;
+    private String rutina_nombre;
     private ListaEjerciciosContract.Presenter presenter;
     private final String EJERCICIO ="EJERCICIO";
+    private final String RUTINA ="RUTINA";
+    private final String ID_EJERCICIO_A_ELIMINAR="ID_EJERCICIO_A_ELIMINAR";
 
 
-    public static ListaEjerciciosMenuLClick newInstance( Ejercicio ejercicio) {
+    public static ListaEjerciciosMenuLClick newInstance(String rutina, Ejercicio ejercicio) {
 
         Bundle args = new Bundle();
 
         ListaEjerciciosMenuLClick fragment = new ListaEjerciciosMenuLClick();
 
         args.putSerializable("EJERCICIO", ejercicio);
+        args.putSerializable("RUTINA", rutina);
+
+
 
         fragment.setArguments(args);
         return fragment;
@@ -55,7 +62,7 @@ public class ListaEjerciciosMenuLClick extends DialogFragment {
 
         ejercicio =(Ejercicio) getArguments()
                 .getSerializable("EJERCICIO");
-
+        rutina_nombre=(String)getArguments().getSerializable("RUTINA");
 
 
         Log.i("Ejercicio en Detalle: ", ejercicio.toString());
@@ -84,9 +91,20 @@ public class ListaEjerciciosMenuLClick extends DialogFragment {
                 myBuild.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        presenter.borrarEjercicio(ejercicio.getId());
                         dialogInterface.cancel();
                         getDialog().dismiss();
+                        Bundle args_eli = new Bundle();
+                        args_eli.putSerializable(RUTINA, rutina_nombre);
+                        args_eli.putSerializable(ID_EJERCICIO_A_ELIMINAR,ejercicio.getId());
+                        Fragment toFragment = new ListaEjerciciosVista();
+                        toFragment.setArguments(args_eli);
+                        getFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.content_main, toFragment)
+                                .addToBackStack(RUTINA)
+                                .addToBackStack(ID_EJERCICIO_A_ELIMINAR)
+                                .commit();
+
                     }
                 });
                 myBuild.setNegativeButton("No", new DialogInterface.OnClickListener() {

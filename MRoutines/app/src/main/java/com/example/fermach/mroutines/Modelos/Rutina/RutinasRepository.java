@@ -77,26 +77,24 @@ public class RutinasRepository implements RutinasDataSource{
             public void onRutinaEliminada() {
                 Log.i("REpository", "Se ha eliminado la rutina ");
                 callback.onRutinaEliminada();
-              /*
+
                 ejerciciosRepository= EjerciciosRepository.getInstance();
                 ejerciciosRepository.deleteEjercicios(rutina_nombre, new EjerciciosDataSource.DeleteEjerciciosCallback() {
                     @Override
-                    public void onEjerciciosEliminado() {
+                    public void onEjerciciosEliminados() {
 
-                        //aqui borramos la rutina
-
-
+                        Log.i("Eliminar TODOS Ejer_RuR", "Se han eliminado todos los ejercicios de esa rutina ");
 
 
-                        callback.onRutinaEliminada();
                     }
 
                     @Override
-                    public void onEjerciciosEliminadoError() {
+                    public void onEjerciciosEliminadosError() {
+                        Log.i("Eliminar TODOS Ejer_RuR", "No se han podido eliminar todos los ejercicios de esa rutina");
 
                     }
                 });
-                */
+
             }
 
             @Override

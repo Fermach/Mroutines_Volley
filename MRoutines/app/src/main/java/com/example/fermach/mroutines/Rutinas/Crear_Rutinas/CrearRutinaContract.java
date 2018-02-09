@@ -11,11 +11,11 @@ import java.util.List;
 public interface CrearRutinaContract {
 
     interface View {
-        void mostrarError();
-
+        void onRutinaCreadaError();
+        void onRutinaCreada();
     }
     interface Presenter {
-        void cargaRutinas();
+
         void crearRutina(Rutina rutina);
 
     }

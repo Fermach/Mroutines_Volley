@@ -37,7 +37,7 @@ exports.crearEjercicio = function(req, res) {
               res.send(err);
           console.log('Ejercicio añadido: ' + ejercicio);
           res.json({ message: 'Ejercicio creado correctamente' });          
-          res.status(301).json(data);
+         
       });
 };
 

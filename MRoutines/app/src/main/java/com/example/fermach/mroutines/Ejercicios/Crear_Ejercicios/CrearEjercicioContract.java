@@ -11,11 +11,11 @@ import java.util.List;
 public interface CrearEjercicioContract {
 
     interface View {
-        void mostrarEjercicios(List<Ejercicio> ejercicios);
-        void mostrarError();
+        void onEjercicioCreado();
+        void onEjercicioCreadoError();
     }
     interface Presenter {
-        void cargaEjercicios();
+
         void crearEjercicio(Ejercicio ejercicio);
     }
 }

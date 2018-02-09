@@ -37,8 +37,8 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
     private Fragment fragment;
     private Rutina rutina;
     private boolean rutinaActualizada;
-    private boolean rutinaEliminada;
-    String rutinaNombreEliminar;
+    private boolean eliminar_rutins;
+    String nombre_rutina_eliminar;
     private final String RUTINA ="RUTINA";
 
     public ListaRutinasVista() {
@@ -51,7 +51,7 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
 
         fragment = new ListaRutinasVista();
         rutinaActualizada=false;
-        rutinaEliminada=false;
+        eliminar_rutins=false;
 
 
         inicializarVistas();
@@ -65,11 +65,11 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
 
         if(args!=null) {
 
-            rutinaEliminada = (Boolean) args.getSerializable("RUTINA_ELIMINADA");
-            rutinaNombreEliminar=(String) args.getSerializable("RUTINA_ELIMINADA_NOMBRE");
-            Log.i("Argumentos", "RECOGIDOS =" + rutinaEliminada);
+            eliminar_rutins = (Boolean) args.getSerializable("ELIMINAR_RUTINA");
+            nombre_rutina_eliminar=(String) args.getSerializable("RUTINA_A_ELIMINAR_NOMBRE");
+            Log.i("Argumentos", "RECOGIDOS =" + eliminar_rutins);
 
-            presenter.borrarRutina(rutinaNombreEliminar);
+            presenter.borrarRutina(nombre_rutina_eliminar);
         }else{
             Log.i("Argumentos", "NULOS" );
 

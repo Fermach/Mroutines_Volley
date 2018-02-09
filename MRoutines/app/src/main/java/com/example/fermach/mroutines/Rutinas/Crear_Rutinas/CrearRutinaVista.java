@@ -57,7 +57,7 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
         poblarSpinner();
 
         presenter=new CrearRutinaPresenter(this);
-        presenter.cargaRutinas();
+
 
         return myView;
     }
@@ -70,7 +70,7 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
         sp_nivel_rutina= myView.findViewById(R.id.spinner_nivelRutina);
         añadir_rutina= myView.findViewById(R.id.btn_crear_formRutina);
         cancelar_rutina= myView.findViewById(R.id.btn_cancelar_formRutina);
-        num_rutinas=myView.findViewById(R.id.num_Rutinas);
+
     }
 
     public void activarControladores(){
@@ -90,8 +90,6 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
                     Log.i("Rutina creada:", rutina.toString());
                     presenter.crearRutina(rutina);
 
-                    fragment = new ListaRutinasVista();
-                    getFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
 
                 }
             }
@@ -119,8 +117,16 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
 
 
     @Override
-    public void mostrarError() {
+    public void onRutinaCreadaError() {
+        Snackbar.make(myView,"No se pudo crear la Rutina", Snackbar.LENGTH_SHORT).show();
 
+    }
+
+    @Override
+    public void onRutinaCreada() {
+
+        fragment = new ListaRutinasVista();
+        getFragmentManager().beginTransaction().replace(R.id.content_main, fragment).commit();
 
     }
 }

@@ -28,7 +28,7 @@ public interface EjerciciosDataSource {
             void onEjercicioCargadaError();
         }
         interface CreateEjercicioCallback {
-            void onEjercicioCreado(List<Ejercicio> ejercicios);
+            void onEjercicioCreado();
             void onEjercicioCreadoError();
         }
         interface DeleteEjercicioCallback {
@@ -36,8 +36,8 @@ public interface EjerciciosDataSource {
             void onEjercicioEliminadoError();
          }
         interface DeleteEjerciciosCallback {
-            void onEjerciciosEliminado();
-            void onEjerciciosEliminadoError();
+            void onEjerciciosEliminados();
+            void onEjerciciosEliminadosError();
          }
         interface UpdateEjercicioCallback {
             void onEjercicioActualizado(String id_ejercicio);

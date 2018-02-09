@@ -58,11 +58,15 @@ public class ListaEjerciciosPresenter implements ListaEjerciciosContract.Present
          ejerciciosRepository.deleteEjercicio(ejercicio_id, new EjerciciosDataSource.DeleteEjercicioCallback() {
              @Override
              public void onEjercicioEliminado() {
+                 Log.i("REpositoryLista_Ejerc", "Se ha eliminado el Ejercicio ");
 
+                 ejerciciosView.onEjercicioEliminado();
              }
 
              @Override
              public void onEjercicioEliminadoError() {
+                 Log.i("REpositoryLista_Ejerc", "No se ha podido eliminar el Ejercicio ");
+
 
              }
          });

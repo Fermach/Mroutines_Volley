@@ -12,7 +12,7 @@ import java.util.List;
 public interface ListaEjerciciosContract {
 
     interface View {
-        void mostrarError();
+        void onEjercicioEliminado();
         void mostrarEjercicios(List<Ejercicio> ejercicios);
         void poblarListaEjercicios(List<Ejercicio> ejercicios);
         void activarListaClickable(List<Ejercicio> ejercicios);

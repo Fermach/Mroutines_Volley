@@ -2,6 +2,8 @@ package com.example.fermach.mroutines.Modelos.Ejercicio;
 
 import android.util.Log;
 
+import com.example.fermach.mroutines.Modelos.Api.EjerciciosAPI;
+import com.example.fermach.mroutines.Modelos.Api.RutinasAPI;
 import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 import com.example.fermach.mroutines.Modelos.Rutina.RutinasDataSource;
 
@@ -15,8 +17,7 @@ import java.util.List;
 public class EjerciciosRepository implements EjerciciosDataSource{
 
     private static EjerciciosRepository INSTANCIA = null;
-    private List<Ejercicio> listaEjercicios = new ArrayList<>();
-    private List<Ejercicio> listaEjerciciosPorRutina = new ArrayList<>();
+    private List<Ejercicio> listaEjerciciosPorRutina = null;
 
     public static EjerciciosRepository getInstance() {
         if (INSTANCIA == null) {
@@ -29,62 +30,107 @@ public class EjerciciosRepository implements EjerciciosDataSource{
 
     @Override
     public void getEjercicios(CargaEjerciciosCallback callback) {
-        callback.onEjerciciosCargados(listaEjercicios);
+
 
     }
 
     @Override
-    public void getEjerciciosPorRutina(String rutina, CargaEjerciciosCallback callback) {
-        for (Ejercicio e: listaEjercicios) {
-            if(e.getRutina().equals(rutina)){
-                listaEjerciciosPorRutina.add(e);
+    public void getEjerciciosPorRutina(String rutina, final CargaEjerciciosCallback callback) {
+
+        EjerciciosAPI ejerciciosAPI= new EjerciciosAPI();
+        ejerciciosAPI.getEjerciciosPorRutina(rutina, new CargaEjerciciosCallback() {
+            @Override
+            public void onEjerciciosCargados(List<Ejercicio> ejercicios) {
+               listaEjerciciosPorRutina=ejercicios;
+               Log.i("Lista de ejercicios", "Repository"+listaEjerciciosPorRutina);
+                callback.onEjerciciosCargados(ejercicios);
             }
-        }
 
-        callback.onEjerciciosCargados(listaEjerciciosPorRutina);
-        listaEjerciciosPorRutina=new ArrayList<>();
+            @Override
+            public void onEjerciciosCargadosError() {
+                callback.onEjerciciosCargadosError();
+                Log.i("REpository", "Error al cargar ejercicios");
+            }
+        });
 
     }
 
     @Override
-    public void createEjercicio(Ejercicio rutina, CreateEjercicioCallback callback) {
-      if(listaEjercicios.add(rutina)){
-          callback.onEjercicioCreado(listaEjercicios);
-          Log.i("Lista de ejercicios:", listaEjercicios.toString());
-      }else{
-          callback.onEjercicioCreadoError();
-      }
+    public void createEjercicio(Ejercicio ejercicio, final CreateEjercicioCallback callback) {
+        EjerciciosAPI ejerciciosAPI= new EjerciciosAPI();
+        ejerciciosAPI.createEjercicio(ejercicio, new CreateEjercicioCallback() {
+            @Override
+            public void onEjercicioCreado() {
+                Log.i("REpository", "Ejercicio creado correctamente");
+                callback.onEjercicioCreado();
+            }
+
+            @Override
+            public void onEjercicioCreadoError() {
+                Log.i("REpository", "No se pudo crear el ejercicio");
+                callback.onEjercicioCreadoError();
+            }
+        });
+
     }
 
     @Override
-    public void deleteEjercicio(String id_ejercicio, DeleteEjercicioCallback callback) {
-        Log.i("Ejer a borrar REPO", id_ejercicio);
-        Log.i("LEjer a borrar REPO", listaEjerciciosPorRutina.toString());
+    public void deleteEjercicio(String id_ejercicio, final DeleteEjercicioCallback callback) {
 
-       /* for(int i=0; i< listaEjerciciosPorRutina.size();i++){
-
-           if(id_ejercicio.equals(listaEjerciciosPorRutina.get(i).getId())){
-
-               listaEjerciciosPorRutina.remove(i);
-               callback.onEjercicioEliminado(listaEjerciciosPorRutina);
-               Log.i("Ejercicio borrado: ", id_ejercicio);
+       Log.i("REpository", "Se ha recogido el ejercicio a borrar ");
+       EjerciciosAPI ejerciciosAPI= new EjerciciosAPI();
+       ejerciciosAPI.deleteEjercicio(id_ejercicio, new DeleteEjercicioCallback() {
+           @Override
+           public void onEjercicioEliminado() {
+               Log.i("REpository", "Se ha eliminado el Ejercicioa ");
+               callback.onEjercicioEliminado();
            }
-       }
-       */
-       callback.onEjercicioEliminado();
+
+           @Override
+           public void onEjercicioEliminadoError() {
+               Log.i("REpository", "No se ha podido eliminar el Ejercicioa ");
+               callback.onEjercicioEliminadoError();
+           }
+       });
     }
 
     @Override
-    public void deleteEjercicios(String nombre_rutina, DeleteEjerciciosCallback callback) {
+    public void deleteEjercicios(final String nombre_rutina, final DeleteEjerciciosCallback callback) {
+         EjerciciosAPI ejerciciosAPI= new EjerciciosAPI();
+         ejerciciosAPI.deleteEjercicios(nombre_rutina, new DeleteEjerciciosCallback() {
+             @Override
+             public void onEjerciciosEliminados() {
+                 Log.i("Eliminar TODOS EjercicR", "SE HAN ELIMINADO TODOS LOS EJERCICIOS DE LA RUTINA!! "+ nombre_rutina);
+                  callback.onEjerciciosEliminados();
+            }
 
+             @Override
+             public void onEjerciciosEliminadosError() {
+                 Log.i("Eliminar TODOS EjercicR", "No se haN podido eliminar todos los ejercicios de esa rutina: "+ nombre_rutina);
+                 callback.onEjerciciosEliminadosError();
+             }
+         });
     }
 
     @Override
-    public void updateEjercicio(String id_ejercicio, Ejercicio ejercicio, UpdateEjercicioCallback callback) {
+    public void updateEjercicio(String id_ejercicio, Ejercicio ejercicio, final UpdateEjercicioCallback callback) {
 
-        Log.i("Update ejercicio nombre", id_ejercicio);
-        Log.i("Update ejercicio:", id_ejercicio);
-        callback.onEjercicioActualizado(id_ejercicio);
+        EjerciciosAPI ejerciciosAPI= new EjerciciosAPI();
+        ejerciciosAPI.updateEjercicio(id_ejercicio, ejercicio, new UpdateEjercicioCallback() {
+            @Override
+            public void onEjercicioActualizado(String id_ejercicio) {
+                Log.i("REpository", "Se ha actualizado el Ejercicio con el id "+id_ejercicio);
+
+                callback.onEjercicioActualizado(id_ejercicio);
+            }
+
+            @Override
+            public void onEjercicioActualizadoError() {
+                Log.i("REpository", "No se ha podido actualizar el ejercicio ");
+
+                callback.onEjercicioActualizadoError();
+            }
+        });
     }
 
     @Override

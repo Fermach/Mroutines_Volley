@@ -78,11 +78,15 @@ public class EditarEjercicioVista extends Fragment implements EditarEjercicioCon
     public void inicializarVistas(){
 
         et_nombre_ejercicio=myView.findViewById(R.id.editText_nombreEjercicio_editar);
+         et_nombre_ejercicio.setText(ejercicioActualizar.getNombre());
+
         et_series_ejercicio= myView.findViewById(R.id.editText_seriesEjercicio_editar);
         et_reps_ejercicio= myView.findViewById(R.id.editText_repesEjercicio_editar);
         et_duracion_ejercicio= myView.findViewById(R.id.editText_tiempoEjercicio_editar);
+
         añadir_ejercicio= myView.findViewById(R.id.btn_crear_formEjer_editar);
         cancelar_ejercicio= myView.findViewById(R.id.btn_cancelar_formEjer_editar);
+
         sp_tipo_ejercicio= myView.findViewById(R.id.spinner_tipoEjercicio_editar);
         sp_unid_tiempo=myView.findViewById(R.id.spinner_unidadesTiempo_editar);
 

@@ -37,11 +37,12 @@ public class EditarRutinaVista extends Fragment implements EditarRutinaContract.
     private Button cancelar_rutina;
     private View myView;
     private Fragment fragment;
-    private String rutina_nombre;
+    private Rutina rutina_nombre;
     private String RUTINA_ACTUALIZADA="RUTINA_ACTUALIZADA";
     private String nivel;
     private String tipo;
     private Rutina rutina;
+    private String nombre;
 
 
     public EditarRutinaVista() {
@@ -55,7 +56,7 @@ public class EditarRutinaVista extends Fragment implements EditarRutinaContract.
         fragment = new EditarRutinaVista();
 
         Bundle args = getArguments();
-        rutina_nombre =(String) args
+            rutina_nombre =(Rutina) args
                 .getSerializable("RUTINA_NOMBRE");
 
         inicializarVistas();
@@ -71,7 +72,7 @@ public class EditarRutinaVista extends Fragment implements EditarRutinaContract.
     public void inicializarVistas(){
 
         et_nombre_rutina= myView.findViewById(R.id.editText_nombreRutina_editar);
-        et_nombre_rutina.setText(rutina_nombre);
+        et_nombre_rutina.setText(rutina_nombre.getNombre());
 
         sp_tipo_rutina= myView.findViewById(R.id.spinner_tipoRutina_editar);
         sp_nivel_rutina= myView.findViewById(R.id.spinner_nivelRutina_editar);
@@ -86,17 +87,17 @@ public class EditarRutinaVista extends Fragment implements EditarRutinaContract.
             @Override
             public void onClick(View view) {
 
-                rutina_nombre= et_nombre_rutina.getText().toString();
+                nombre= et_nombre_rutina.getText().toString();
                 tipo= sp_tipo_rutina.getSelectedItem().toString().toLowerCase();
                 nivel= sp_nivel_rutina.getSelectedItem().toString().toLowerCase();
 
-                rutina=new Rutina(rutina_nombre,tipo,nivel);
+                rutina=new Rutina(nombre,tipo,nivel);
 
-                if (rutina_nombre.length() < 1) {
+                if (nombre.length() < 1) {
                     Snackbar.make(myView,"Debe introducir un nombre valido", Snackbar.LENGTH_SHORT).show();
                 } else {
                     Log.i("Rutina creada:", rutina.toString());
-                    presenter.editarRutina(rutina_nombre,rutina);
+                    presenter.editarRutina(nombre,rutina);
 
 
 

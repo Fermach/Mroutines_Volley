@@ -21,21 +21,6 @@ public class CrearEjercicioPresenter implements CrearEjercicioContract.Presenter
         this.ejerciciosRepository = ejerciciosRepository.getInstance();
     }
 
-    @Override
-    public void cargaEjercicios() {
-         ejerciciosRepository.getEjercicios(new EjerciciosDataSource.CargaEjerciciosCallback() {
-             @Override
-             public void onEjerciciosCargados(List<Ejercicio> ejercicios) {
-                 ejerciciosView.mostrarEjercicios(ejercicios);
-             }
-
-             @Override
-             public void onEjerciciosCargadosError() {
-
-             }
-         });
-
-    }
 
     @Override
     public void crearEjercicio(Ejercicio ejercicio) {
@@ -43,13 +28,16 @@ public class CrearEjercicioPresenter implements CrearEjercicioContract.Presenter
         Log.i("Mi ejercicio creado:", ejercicio.toString());
         ejerciciosRepository.createEjercicio(miEjercicio, new EjerciciosDataSource.CreateEjercicioCallback() {
             @Override
-            public void onEjercicioCreado(List<Ejercicio> ejercicios) {
-                ejerciciosView.mostrarEjercicios(ejercicios);
+            public void onEjercicioCreado() {
+                Log.i("PresenterCrearEj", "Ejercicio creado correctamente");
+
+                ejerciciosView.onEjercicioCreado();
             }
 
             @Override
             public void onEjercicioCreadoError() {
-
+                Log.i("PresenterCrearEj", "No se pudo crear el ejercicio");
+                ejerciciosView.onEjercicioCreadoError();
             }
         });
     }

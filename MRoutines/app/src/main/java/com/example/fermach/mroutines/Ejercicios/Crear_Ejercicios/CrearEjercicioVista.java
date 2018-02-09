@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.fermach.mroutines.Ejercicios.Listado_Ejercicios.ListaEjerciciosVista;
 import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
 import com.example.fermach.mroutines.R;
+import com.example.fermach.mroutines.Rutinas.Listado_Rutinas.ListaRutinasVista;
 
 import java.util.List;
 
@@ -38,7 +39,6 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
     private Button cancelar_ejercicio;
     View myView;
     private Fragment fragment;
-    private TextView num_ejercicios;
     String nombre="";
     String series;
     String repeticiones;
@@ -74,7 +74,6 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
         poblarSpinner();
 
         presenter=new CrearEjercicioPresenter(this);
-        presenter.cargaEjercicios();
 
         return myView;
     }
@@ -89,7 +88,6 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
         añadir_ejercicio= myView.findViewById(R.id.btn_crear_formEjer);
         cancelar_ejercicio= myView.findViewById(R.id.btn_cancelar_formEjer);
         sp_tipo_ejercicio= myView.findViewById(R.id.spinner_tipoEjercicio);
-        num_ejercicios=myView.findViewById(R.id.num_Ejercicios);
         sp_unid_tiempo=myView.findViewById(R.id.spinner_unidadesTiempo);
     }
 
@@ -115,15 +113,7 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
                     presenter.crearEjercicio(ejercicio);
 
 
-                    fragment = new ListaEjerciciosVista();
 
-                    Bundle args = new Bundle();
-                    args.putSerializable(RUTINA, rutina);
-                    fragment.setArguments(args);
-                    getFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.content_main, fragment, RUTINA)
-                            .addToBackStack(RUTINA).commit();
                 }
             }
         });
@@ -161,11 +151,21 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
     }
 
     @Override
-    public void mostrarEjercicios(List<Ejercicio> ejercicios) {
-        num_ejercicios.setText("Numero de ejercicios: "+ ejercicios.size());
+    public void onEjercicioCreado() {
+        fragment = new ListaEjerciciosVista();
+
+        Bundle args = new Bundle();
+        args.putSerializable(RUTINA, rutina);
+        fragment.setArguments(args);
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content_main, fragment, RUTINA)
+                .addToBackStack(RUTINA).commit();
     }
 
     @Override
-    public void mostrarError() {
+    public void onEjercicioCreadoError() {
+        Snackbar.make(myView,"No se pudo crear el Ejercicio", Snackbar.LENGTH_SHORT).show();
+
     }
 }
