@@ -11,13 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Fermach on 18/01/2018.
+ *
+ * Repositorio donde almacenamos nuestra lista de ejercicios que obtenemos de nuestra api_REST
+ * con las diferentes opciones de nuestro servicio( GET,POST,PUT,DELETE)
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public class EjerciciosRepository implements EjerciciosDataSource{
 
     private static EjerciciosRepository INSTANCIA = null;
     private List<Ejercicio> listaEjerciciosPorRutina = null;
+
+    //Singletone del repositorio, para que solo pueda existir una instancia
 
     public static EjerciciosRepository getInstance() {
         if (INSTANCIA == null) {
@@ -106,8 +114,7 @@ public class EjerciciosRepository implements EjerciciosDataSource{
 
              @Override
              public void onEjerciciosEliminadosError() {
-                 Log.i("Eliminar TODOS EjercicR", "No se haN podido eliminar todos los ejercicios de esa rutina: "+ nombre_rutina);
-                 callback.onEjerciciosEliminadosError();
+                  callback.onEjerciciosEliminadosError();
              }
          });
     }

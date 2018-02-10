@@ -10,7 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Fermach on 18/01/2018.
+ *
+ * Repositorio donde almacenamos nuestra lista de rutinas que obtenemos de nuestra api_REST
+ * con las diferentes opciones de nuestro servicio( GET,POST,PUT,DELETE)
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public class RutinasRepository implements RutinasDataSource{
@@ -19,6 +25,7 @@ public class RutinasRepository implements RutinasDataSource{
     private static RutinasRepository INSTANCIA = null;
     private List<Rutina> listaRutinas =null;
 
+    //Singletone del repositorio, para que solo pueda existir una instancia
     public static RutinasRepository getInstance() {
         if (INSTANCIA == null) {
             INSTANCIA = new RutinasRepository();
@@ -70,7 +77,7 @@ public class RutinasRepository implements RutinasDataSource{
 
     @Override
     public void deleteRutina(final String rutina_nombre, final DeleteRutinaCallback callback) {
-       //borramos todos los ejercicios de esa rutina
+
         RutinasAPI rutinasAPI= new RutinasAPI();
         rutinasAPI.deleteRutina(rutina_nombre, new DeleteRutinaCallback() {
             @Override
@@ -78,6 +85,7 @@ public class RutinasRepository implements RutinasDataSource{
                 Log.i("REpository", "Se ha eliminado la rutina ");
                 callback.onRutinaEliminada();
 
+                //Al borrar una rutina borramos todos los ejercicios de esa rutina
                 ejerciciosRepository= EjerciciosRepository.getInstance();
                 ejerciciosRepository.deleteEjercicios(rutina_nombre, new EjerciciosDataSource.DeleteEjerciciosCallback() {
                     @Override

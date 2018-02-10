@@ -17,7 +17,11 @@ import com.example.fermach.mroutines.R;
 import java.util.List;
 
 /**
- * Created by Fermach on 18/01/2018.
+ * Adaptador para el listado de rutinas
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public class ListaRutinasAdapter extends ArrayAdapter<Rutina> {

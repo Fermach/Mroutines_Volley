@@ -23,9 +23,11 @@ import java.util.List;
 
 
 /**
- * Created by Fermach on 18/01/2018.
+ * Esta es la vista del fragmento para crear ejercicios
+ * @author Fermach
+ * @version 1.0.
+ *
  */
-
 public class CrearEjercicioVista extends Fragment implements CrearEjercicioContract.View{
 
     private CrearEjercicioContract.Presenter presenter;
@@ -60,6 +62,8 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
 
         Bundle args = getArguments();
 
+        //recibimos el nombre de la rutina para crear un ejercicio con es rutina
+
         if((args.getSerializable("RUTINA_NOMBRE"))!=null) {
 
             rutina = (String) args.getSerializable("RUTINA_NOMBRE");
@@ -93,6 +97,8 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
 
     public void activarControladores(){
 
+        //si pulsamos sobre añadir ejercicio nos crea una ejercicio con
+        //los datos intoducidos en los campos y llama al presentador para que lo cree
         añadir_ejercicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,6 +112,7 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
                     Snackbar.make(myView,"Debe introducir un nombre valido", Snackbar.LENGTH_SHORT).show();
                 } else {
 
+                    //se crea un id automaticamente con el nombre de la rutina y el del ejercicio
                     String id = nombre + rutina;
                     ejercicio = new Ejercicio(id, nombre, series, repeticiones, duracion, tipo, rutina);
 
@@ -118,6 +125,7 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
             }
         });
 
+        //si pulsamos cancelar volveos a la lista
         cancelar_ejercicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,7 +145,7 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
 
     public void poblarSpinner(){
         String[] valores_tipo= {"Pierna","Torso", "Brazos","Pecho", "Espalda","Triceps","Biceps",
-                "Hombros","Gluteos","Biceps Femoral","Cuadriceps", "Gemelos"};
+                "Hombros","Gluteos","Biceps Femoral","Cuadriceps", "Gemelos", "FullBody"};
 
         String[] valores_unid_tiempo= {"min","seg","hor"};
 
@@ -152,6 +160,8 @@ public class CrearEjercicioVista extends Fragment implements CrearEjercicioContr
 
     @Override
     public void onEjercicioCreado() {
+
+        //volvemos a la lista de ejercicios pasandole la rutina
         fragment = new ListaEjerciciosVista();
 
         Bundle args = new Bundle();

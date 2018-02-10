@@ -4,7 +4,9 @@ import android.app.Application;
 import android.content.Context;
 
 /**
- * Created by Fermach on 13/01/2018.
+ *
+ * Clase para optener el contexto actual de la aplicación
+ * @author Fermach
  */
 
 public class App extends Application {

@@ -22,11 +22,13 @@ import com.example.fermach.mroutines.R;
 
 import java.util.List;
 
-
 /**
- * Created by Fermach on 18/01/2018.
+ *
+ * Fragmento con la vista de la lista de ejercicios
+ * @author Fermach
+ * @version 1.0.
+ *
  */
-
 public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosContract.View{
 
     private ListaEjerciciosContract.Presenter presenter;
@@ -54,10 +56,14 @@ public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosCon
         id_ejercicio_eliminar=null;
         fragment = new ListaEjerciciosVista();
 
+        //recibimos la rutina sobre la cual buscar los ejercicios
+        //del fragmento padre
         Bundle args = getArguments();
         rutina_nombre =(String) args
                 .getSerializable("RUTINA");
 
+        //Si venimos de borrar ejercicio, recibimos el ejercicio a eliminar, de lo contrario
+        //recibiremos null
         id_ejercicio_eliminar=(String)
                 args.getSerializable("ID_EJERCICIO_A_ELIMINAR");
         Log.i("Argumentos01", "RECOGIDOS =" + id_ejercicio_eliminar);
@@ -68,6 +74,8 @@ public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosCon
 
         presenter=new ListaEjerciciosPresenter(this);
         presenter.cargaEjercicios(rutina_nombre);
+
+        //si recibimos un ejercicio para eliminar lo eliminamos
         if(id_ejercicio_eliminar!=null){
             Log.i("Argumentos02", "RECOGIDOS =" + id_ejercicio_eliminar);
             presenter.borrarEjercicio(id_ejercicio_eliminar);
@@ -90,6 +98,7 @@ public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosCon
         fab_ejercicios.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Al clickar sobre el fab nos lleva al menu para crear ejercicios pasandole la rutina
                 fragment = new CrearEjercicioVista();
                 Bundle args = new Bundle();
                 args.putSerializable(RUTINA_NOMBRE, rutina_nombre);
@@ -115,6 +124,9 @@ public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosCon
         list_ejercicios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                //Cuando clickemos en un un ejercicio de la lista nos lleva al fragmento con
+                //el detalle de ese ejercicio pasandole el ejercicio
                 ejercicio= ejercicios.get(position);
                 FragmentManager fragmentManager=getFragmentManager();
 
@@ -126,9 +138,14 @@ public class ListaEjerciciosVista extends Fragment implements ListaEjerciciosCon
         list_ejercicios.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
                 ejercicio= ejercicios.get(position);
                 FragmentManager fragmentManager=getFragmentManager();
 
+
+                //Cuando hagamos long click en la lista de ejercicios nos lleva al fragmento con
+                //el menu de borrar o editar pasandole el ejercicio como instancia
                 DialogFragment dialogFragment= ListaEjerciciosMenuLClick.newInstance(rutina_nombre, ejercicio);
                 dialogFragment.show(fragmentManager, "menuEjercicios");
 

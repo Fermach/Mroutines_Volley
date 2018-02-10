@@ -1,10 +1,14 @@
 package com.example.fermach.mroutines.Modelos.Ejercicio;
 
-
 /**
- * Created by Fermach on 18/01/2018.
+ *
+ * Interfaz con los metodos de nuestro servicio REST
+ * de ejercicios
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
-
 import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 
 import java.util.List;

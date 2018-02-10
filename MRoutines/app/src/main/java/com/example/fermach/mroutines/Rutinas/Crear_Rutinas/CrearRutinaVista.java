@@ -22,9 +22,11 @@ import java.util.List;
 
 
 /**
- * Created by Fermach on 18/01/2018.
+ * Esta es la vista del fragmento para crear rutinas
+ * @author Fermach
+ * @version 1.0.
+ *
  */
-
 public class CrearRutinaVista extends Fragment implements CrearRutinaContract.View{
 
     private CrearRutinaContract.Presenter presenter;
@@ -52,6 +54,7 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
 
         fragment = new CrearRutinaVista();
 
+
         inicializarVistas();
         activarControladores();
         poblarSpinner();
@@ -75,6 +78,8 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
 
     public void activarControladores(){
 
+        //si pulsamos sobre añadir rutina nos crea una rutina con
+        //los datos intoducidos en los campos y llama al presentador para que la cree
         añadir_rutina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +100,7 @@ public class CrearRutinaVista extends Fragment implements CrearRutinaContract.Vi
             }
         });
 
+        //si pulsamos cancelar volveos a la lista
         cancelar_rutina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

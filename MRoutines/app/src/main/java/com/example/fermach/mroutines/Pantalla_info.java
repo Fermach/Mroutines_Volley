@@ -8,7 +8,10 @@ import android.view.ViewGroup;
 
 
 /**
- * Created by Fermach on 18/01/2018.
+ * Pantalla FIJA con la información sobre la aplicación
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public class Pantalla_info extends Fragment {
@@ -17,7 +20,6 @@ public class Pantalla_info extends Fragment {
 
     public Pantalla_info() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {

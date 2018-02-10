@@ -2,8 +2,14 @@ package com.example.fermach.mroutines.Modelos.Rutina;
 
 import java.io.Serializable;
 
+
 /**
- * Created by Fermach on 13/01/2018.
+ *
+ * Modelo de Rutina
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public class Rutina implements Serializable{

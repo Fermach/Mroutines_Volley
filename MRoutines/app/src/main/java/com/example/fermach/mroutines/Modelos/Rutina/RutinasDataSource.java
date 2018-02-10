@@ -2,7 +2,13 @@ package com.example.fermach.mroutines.Modelos.Rutina;
 
 
 /**
- * Created by Fermach on 18/01/2018.
+ *
+ * Interfaz con los metodos de nuestro servicio REST
+ * de rutinas
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 import java.util.List;

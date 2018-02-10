@@ -24,7 +24,10 @@ import java.util.List;
 
 
 /**
- * Created by Fermach on 18/01/2018.
+ * Esta es la vista del fragmento para editar rutinas
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public class EditarRutinaVista extends Fragment implements EditarRutinaContract.View{
@@ -83,6 +86,9 @@ public class EditarRutinaVista extends Fragment implements EditarRutinaContract.
 
     public void activarControladores(){
 
+
+        //si pulsamos sobre añadir rutina nos crea unna rutina con
+        //los datos intoducidos en los campos y llama al presentador para que la actualice
         añadir_rutina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,6 +111,7 @@ public class EditarRutinaVista extends Fragment implements EditarRutinaContract.
             }
         });
 
+        //si pulsamos cancelar volvemos a la lista
         cancelar_rutina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,6 +144,7 @@ public class EditarRutinaVista extends Fragment implements EditarRutinaContract.
 
         Snackbar.make(myView, "Se ha actualizado la rutina correctamente", Snackbar.LENGTH_LONG).show();
 
+        // cuando se actualiza la rutina lanzamos un snackbar junto a un hilo que nos lleve a la lista en 1,2 sec
         new Handler().postDelayed(new Runnable(){
             public void run(){
                 // Cuando pasen los 1.2 segundos, pasamos a la actividad principal de la aplicación

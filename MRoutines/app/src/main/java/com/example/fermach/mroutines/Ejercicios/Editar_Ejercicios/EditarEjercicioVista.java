@@ -24,7 +24,10 @@ import com.example.fermach.mroutines.Rutinas.Listado_Rutinas.ListaRutinasVista;
 
 
 /**
- * Created by Fermach on 18/01/2018.
+ * Esta es la vista del fragmento para editar rutinas
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public class EditarEjercicioVista extends Fragment implements EditarEjercicioContract.View{
@@ -61,6 +64,7 @@ public class EditarEjercicioVista extends Fragment implements EditarEjercicioCon
 
         fragment = new EditarEjercicioVista();
 
+        //recibimos el ejercicio a actualizar del fragmento padre
         Bundle args = getArguments();
         ejercicioActualizar =(Ejercicio) args
                 .getSerializable("EJERCICIO");
@@ -94,6 +98,9 @@ public class EditarEjercicioVista extends Fragment implements EditarEjercicioCon
 
     public void activarControladores(){
 
+
+        //si pulsamos sobre añadir ejercicio nos crea unna rutina con
+        //los datos intoducidos en los campos y llama al presentador para que la actualice
         añadir_ejercicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,6 +123,7 @@ public class EditarEjercicioVista extends Fragment implements EditarEjercicioCon
             }
         });
 
+        //si pulsamos cancelar volvemos a la lista
         cancelar_ejercicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -160,6 +168,8 @@ public class EditarEjercicioVista extends Fragment implements EditarEjercicioCon
     public void onEjercicioActualizado() {
 
         Snackbar.make(myView, "Se ha actualizado el ejercicio correctamente", Snackbar.LENGTH_LONG).show();
+
+        // cuando se actualiza la rutina lanzamos un snackbar junto a un hilo que nos lleve a la lista en 1,2 sec
 
         new Handler().postDelayed(new Runnable(){
             public void run(){

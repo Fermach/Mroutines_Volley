@@ -4,9 +4,13 @@ import java.io.Serializable;
 import java.sql.Time;
 
 /**
- * Created by Fermach on 13/01/2018.
+ *
+ * Modelo de Ejercicio
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
-
 public class Ejercicio implements Serializable {
 
     private String id;

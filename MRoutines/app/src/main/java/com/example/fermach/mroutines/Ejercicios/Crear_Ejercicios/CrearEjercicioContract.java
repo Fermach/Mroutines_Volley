@@ -5,8 +5,15 @@ import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
 import java.util.List;
 
 /**
- * Created by Fermach on 18/01/2018.
+ *
+ * Interfaz con los metodos de nuestro view y presenter del fragmento
+ * para crear ejercicios
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
+
 
 public interface CrearEjercicioContract {
 

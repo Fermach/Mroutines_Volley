@@ -13,13 +13,19 @@ import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
 import com.example.fermach.mroutines.R;
 
 /**
- * Created by Fermach on 25/01/2018.
+ *
+ * Fragmento con el detalle del ejercicio clickeado de nuestra lista
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public class ListaEjerciciosDetalle extends DialogFragment {
 
     private Ejercicio ejercicio;
 
+    //al instanciar el fragmento le pasamos el ejercicio seleccionado
     public static ListaEjerciciosDetalle newInstance(Ejercicio ejercicio) {
         ListaEjerciciosDetalle fragment = new ListaEjerciciosDetalle();
         Bundle args = new Bundle();
@@ -33,13 +39,14 @@ public class ListaEjerciciosDetalle extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        //al crear el fragmneto recibimos el ejercicio de nuestra instancia
         ejercicio =(Ejercicio) getArguments()
                 .getSerializable("EJERCICIO");
 
         Log.i("Ejercicio en Detalle: ", ejercicio.toString());
 
     }
+
 
     @Nullable
     @Override

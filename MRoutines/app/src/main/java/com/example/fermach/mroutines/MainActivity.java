@@ -2,7 +2,6 @@ package com.example.fermach.mroutines;
 
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.PersistableBundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -11,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.fermach.mroutines.Rutinas.Crear_Rutinas.CrearRutinaVista;
@@ -23,6 +23,7 @@ import com.example.fermach.mroutines.Rutinas.Listado_Rutinas.ListaRutinasVista;
   * @version 1.0.
   *
   */
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     public final static String MAIN_FRAGMENT="MAIN_FRAGMENT";
@@ -33,51 +34,62 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //se instancia el toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        fragment= new Pantalla_temporal();
+        fragment= new ListaRutinasVista();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //Se instancia el Navigation Drawer
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        //se inicia el fragmeno con la lista de rutinas
+
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        // se activa el controlador de nuestro Navigation Drawer
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Log.i("Activity Main", "MAIN");
 
-        new Handler().postDelayed(new Runnable(){
-            public void run(){
-                // Cuando pasen los 3 segundos, pasamos a la actividad principal de la aplicación
-                fragment = new ListaRutinasVista();
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_main,fragment).commit();
-            };
-        }, 4000);
+
     }
+
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
     }
+
+    /**
+     * Controlamos las el boton tactil de ir hacia atrás
+     */
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
+            Log.i("Activity Main", "1");
+
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
-        }
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+            Log.i("Activity Main", "2");
 
-        if (id == R.id.action_settings) {
-            return true;
+            //si no queda ningún fragment sale de la aplcación
+            if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+                Log.i("Activity Main", "3");
+
+                finishAffinity();
+
+            } else {
+                Log.i("Activity Main", "4");
+
+                //si no manda al fragment anterior.
+                getSupportFragmentManager().popBackStackImmediate();
+            }
         }
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

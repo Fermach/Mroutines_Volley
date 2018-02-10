@@ -6,7 +6,12 @@ import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 import java.util.List;
 
 /**
- * Created by Fermach on 18/01/2018.
+ *
+ * Interfaz con los metodos de nuestro view y presenter de Lista de ejercicios
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public interface ListaEjerciciosContract {

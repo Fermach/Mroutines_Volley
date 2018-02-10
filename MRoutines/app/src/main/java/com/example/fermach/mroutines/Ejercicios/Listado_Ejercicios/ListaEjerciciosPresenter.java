@@ -16,9 +16,11 @@ import com.example.fermach.mroutines.Rutinas.Listado_Rutinas.ListaRutinasContrac
 import java.util.List;
 
 /**
- * Created by Fermach on 18/01/2018.
+ * Este es el presentador de datos que que conecta la lista de ejercicios con el repositorio de datos
+ * @author Fermach
+ * @version 1.0.
+ *
  */
-
 public class ListaEjerciciosPresenter implements ListaEjerciciosContract.Presenter{
     private EjerciciosRepository ejerciciosRepository;
     private ListaEjerciciosContract.View ejerciciosView;
@@ -39,6 +41,8 @@ public class ListaEjerciciosPresenter implements ListaEjerciciosContract.Present
          ejerciciosRepository.getEjerciciosPorRutina(rutina_nombre, new EjerciciosDataSource.CargaEjerciciosCallback() {
              @Override
              public void onEjerciciosCargados(List<Ejercicio> ejercicios) {
+                 //cuando se cargan los ejercicios se realizan las siguientes acciones de la vista
+
              ejerciciosView.poblarListaEjercicios(ejercicios);
              ejerciciosView.activarListaClickable(ejercicios);
              ejerciciosView.mostrarEjercicios(ejercicios);

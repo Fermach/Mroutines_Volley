@@ -20,8 +20,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Fermach on 04/02/2018.
+ * Esta clase se utiliza volley para conectarse a nuestro servidor
+ * y manda las respuesta al repositorio de datos
+ *
+ * @author Fermach
+ * @version 1.0.
  */
+
 
 public class EjerciciosAPI implements EjerciciosDataSource {
 
@@ -118,7 +123,7 @@ public class EjerciciosAPI implements EjerciciosDataSource {
                     @Override
                     public void onResponse(String response) {
                         // response
-                        Log.i("Respuesta_DELET_Ejercicios", response);
+                        Log.i("Respuesta_DELET_Ejercs", response);
                         callback.onEjercicioEliminado();
                     }
                 },
@@ -127,7 +132,7 @@ public class EjerciciosAPI implements EjerciciosDataSource {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // error.
-                        Log.i("Respuesta_DELET_Ejercicios", "Error");
+                        Log.i("Respuesta_DELET_Ejercs", "Error");
                         callback.onEjercicioEliminadoError();
                     }
                 }
@@ -144,7 +149,7 @@ public class EjerciciosAPI implements EjerciciosDataSource {
                     @Override
                     public void onResponse(String response) {
                         // response
-                        Log.i("Respuesta_DELET_EjercR", response);
+                        Log.i("Respuesta_DELET_EjerR", response);
                         callback.onEjerciciosEliminados();
                     }
                 },
@@ -153,7 +158,7 @@ public class EjerciciosAPI implements EjerciciosDataSource {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // error.
-                        Log.i("Respuesta_DELET_EjercR", "Error");
+                        Log.i("Respuesta_DELET_EjerR", "Error");
                         callback.onEjerciciosEliminadosError();
                     }
                 }

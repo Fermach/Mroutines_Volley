@@ -23,7 +23,11 @@ import java.util.List;
 
 
 /**
- * Created by Fermach on 18/01/2018.
+ *
+ * Fragmento con la vista de la lista de rutinas
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public class ListaRutinasVista extends Fragment implements ListaRutinasContract.View{
@@ -57,12 +61,16 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
         inicializarVistas();
         activarControladores();
 
+        //instanciamos el presentador de datos
         presenter=new ListaRutinasPresenter(this);
         presenter.cargaRutinas();
 
 
         Bundle args = getArguments();
 
+        //se comprueba si se estan recibiendo argumentos de otro fragmento
+        //para saber si el menu de borrado nos esta pasando una llave para que borremos una
+        //rutina de la lista
         if(args!=null) {
 
             eliminar_rutins = (Boolean) args.getSerializable("ELIMINAR_RUTINA");
@@ -110,6 +118,9 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
 
     @Override
     public void activarListaClickable(final List<Rutina> rutinas) {
+
+       //Cuando clickemos en la lista de rutinas nos lleva al fragmento con la lista
+        // de ejercicios de esa rutina àsandole el nombre de la rutina
         list_rutinas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -125,6 +136,8 @@ public class ListaRutinasVista extends Fragment implements ListaRutinasContract.
             }
         });
 
+        //Cuando hagamos long click en la lista de rutinas nos lleva al fragmento con
+        //el menu de borrar o editar pasandole la rutina como instancia
         list_rutinas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {

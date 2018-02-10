@@ -11,7 +11,10 @@ import com.example.fermach.mroutines.Modelos.Rutina.RutinasRepository;
 import java.util.List;
 
 /**
- * Created by Fermach on 18/01/2018.
+ * Este es el presentador de datos que que conecta la lista de rutinas con el repositorio de datos
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public class ListaRutinasPresenter implements ListaRutinasContract.Presenter{
@@ -34,6 +37,7 @@ public class ListaRutinasPresenter implements ListaRutinasContract.Presenter{
          rutinasRepository.getRutinas(new RutinasDataSource.CargaRutinasCallback() {
              @Override
              public void onRutinasCargadas(List<Rutina> rutinas) {
+                 //cuando se cargan las rutinas se realizan las siguientes acciones de la vista
                  Log.i("RUUUUTTIINAASS", rutinas.toString());
                  rutinasView.poblarListaRutinas(rutinas);
                  rutinasView.activarListaClickable(rutinas);
@@ -48,6 +52,10 @@ public class ListaRutinasPresenter implements ListaRutinasContract.Presenter{
 
     }
 
+    /**
+     *
+     * @param nombre_rutina
+     */
     @Override
     public void borrarRutina(String nombre_rutina) {
         rutinasRepository.deleteRutina(nombre_rutina, new RutinasDataSource.DeleteRutinaCallback() {

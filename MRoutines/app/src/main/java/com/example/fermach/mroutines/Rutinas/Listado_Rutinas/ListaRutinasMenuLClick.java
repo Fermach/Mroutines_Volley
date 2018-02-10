@@ -22,7 +22,11 @@ import com.example.fermach.mroutines.R;
 import com.example.fermach.mroutines.Rutinas.Editar_Rutinas.EditarRutinaVista;
 
 /**
- * Created by Fermach on 25/01/2018.
+ * Fragmento dialogo con un pequeño menú para borrar o editar rutinas
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public class ListaRutinasMenuLClick extends DialogFragment {
@@ -38,6 +42,7 @@ public class ListaRutinasMenuLClick extends DialogFragment {
 
         Bundle args = new Bundle();
 
+        //mandamos la rutina clickeada en nuestra lista
         args.putSerializable("RUTINA", rutina);
         ListaRutinasMenuLClick fragment = new ListaRutinasMenuLClick();
         fragment.setArguments(args);
@@ -50,7 +55,7 @@ public class ListaRutinasMenuLClick extends DialogFragment {
 
         presenter= new ListaRutinasPresenter();
 
-
+        //cuando se inicia el menu se recoge la rutina clickeada de nuestra lista
         rutina =(Rutina) getArguments()
                 .getSerializable("RUTINA");
     }
@@ -68,12 +73,19 @@ public class ListaRutinasMenuLClick extends DialogFragment {
         borrar_rutina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //Al pulsar en el boton de borrar rutina se crea un dialogo que pregunte
+                //si estamos seguros de su borrado
                 AlertDialog.Builder myBuild = new AlertDialog.Builder(view.getContext());
                 myBuild.setMessage("¿Estás seguro de que deseas borrar esta rutina?");
                 myBuild.setTitle("Borrar Rutina");
                 myBuild.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        //si elegimos Si se cierra el dialogo y el fragmento
+                        //y realizamos un transaccion al fragmento de la lista de rutinas pasandole
+                        //el nombre de la rutina a eliminar y una llave para saber que queremos eliminar una rutina
+
                         dialogInterface.cancel();
                         getDialog().dismiss();
                         Bundle args_eli = new Bundle();
@@ -90,6 +102,8 @@ public class ListaRutinasMenuLClick extends DialogFragment {
                 myBuild.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+
+                        //si elegimos no se cierra el dialogo, y se mantiene el mennu abierto
                         dialogInterface.cancel();
                     }
                 });
@@ -102,7 +116,7 @@ public class ListaRutinasMenuLClick extends DialogFragment {
             @Override
             public void onClick(View view) {
 
-
+                //Si seleccionamos "Editar rutina" nos lleva al fragmento de editar rutina pasandole el nombre de la rutina a editar
                 getDialog().dismiss();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(RUTINA_NOMBRE, rutina);

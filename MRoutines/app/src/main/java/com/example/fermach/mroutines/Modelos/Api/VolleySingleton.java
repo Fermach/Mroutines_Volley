@@ -8,7 +8,12 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
 /**
- * Created by Fermach on 04/02/2018.
+ * Singletone de Volley,
+ * para que solo se pueda crear una instancia de Volley en
+ * nuestra aplicación
+ *
+ * @author Fermach
+ * @version 1.0.
  */
 
 public class VolleySingleton {

@@ -63,7 +63,7 @@
 
     </string>
     <string name="otrosDetallesT">- Otros detalles.</string>
-    <string name="otrosDetalles">
+    <string name="otrosDetalles">\n
         *Autor: Fermach\n
         *Versión: 1.0.\n
         *Correo: f.manu_97@hotmail.com\n

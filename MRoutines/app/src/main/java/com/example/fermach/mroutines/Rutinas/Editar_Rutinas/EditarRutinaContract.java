@@ -4,8 +4,15 @@ import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 
 import java.util.List;
 
+
 /**
- * Created by Fermach on 18/01/2018.
+ *
+ * Interfaz con los metodos de nuestro view y presenter del fragmento
+ * para editar rutinas
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public interface EditarRutinaContract {

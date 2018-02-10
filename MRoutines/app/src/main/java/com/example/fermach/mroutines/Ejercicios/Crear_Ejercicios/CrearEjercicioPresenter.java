@@ -9,7 +9,11 @@ import com.example.fermach.mroutines.Modelos.Ejercicio.EjerciciosRepository;
 import java.util.List;
 
 /**
- * Created by Fermach on 18/01/2018.
+ * Este es el presentador de datos que conecta el fragmento para crear ejercicios
+ * con el repositorio de datos
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public class CrearEjercicioPresenter implements CrearEjercicioContract.Presenter{

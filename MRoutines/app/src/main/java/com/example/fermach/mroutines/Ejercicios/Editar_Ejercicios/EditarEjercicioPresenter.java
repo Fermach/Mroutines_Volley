@@ -7,10 +7,14 @@ import com.example.fermach.mroutines.Modelos.Rutina.Rutina;
 import com.example.fermach.mroutines.Modelos.Rutina.RutinasDataSource;
 import com.example.fermach.mroutines.Modelos.Rutina.RutinasRepository;
 
-/**
- * Created by Fermach on 18/01/2018.
- */
 
+/**
+ * Este es el presentador de datos que que conecta el fragmento para editar ejercicios
+ * con el repositorio de ejercicios
+ * @author Fermach
+ * @version 1.0.
+ *
+ */
 public class EditarEjercicioPresenter implements EditarEjercicioContract.Presenter{
     private EjerciciosRepository ejerciciosRepository;
     private EditarEjercicioContract.View ejerciciosView;

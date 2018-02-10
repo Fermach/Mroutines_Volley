@@ -25,7 +25,11 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by Fermach on 25/01/2018.
+ * Fragmento dialogo con un pequeño menú para borrar o editar rutinas
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public class ListaEjerciciosMenuLClick extends DialogFragment {
@@ -44,6 +48,8 @@ public class ListaEjerciciosMenuLClick extends DialogFragment {
 
         ListaEjerciciosMenuLClick fragment = new ListaEjerciciosMenuLClick();
 
+        //mandamos la rutina y el ejercicio recibido en la instancia
+
         args.putSerializable("EJERCICIO", ejercicio);
         args.putSerializable("RUTINA", rutina);
 
@@ -59,7 +65,7 @@ public class ListaEjerciciosMenuLClick extends DialogFragment {
 
         presenter= new ListaEjerciciosPresenter();
 
-
+        //al crearse el fragmento recibimos la rutina y el ejercicio de la instancia
         ejercicio =(Ejercicio) getArguments()
                 .getSerializable("EJERCICIO");
         rutina_nombre=(String)getArguments().getSerializable("RUTINA");
@@ -84,13 +90,19 @@ public class ListaEjerciciosMenuLClick extends DialogFragment {
             @Override
             public void onClick(View view) {
 
-
+                //Al pulsar en el boton de borrar ejercicio se crea un dialogo que pregunte
+                //si estamos seguros de su borrado
                 AlertDialog.Builder myBuild = new AlertDialog.Builder(view.getContext());
                 myBuild.setMessage("¿Estás seguro de que deseas borrar este ejercicio?");
                 myBuild.setTitle("Borrar Ejercicio");
                 myBuild.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+
+                        //si elegimos Si se cierra el dialogo y el fragmento
+                        //y realizamos un transaccion al fragmento de la lista de rutinas pasandole
+                        //el nombre de la rutina y el ejercicio que queremos eliminar una rutina
+
                         dialogInterface.cancel();
                         getDialog().dismiss();
                         Bundle args_eli = new Bundle();
@@ -121,6 +133,7 @@ public class ListaEjerciciosMenuLClick extends DialogFragment {
             @Override
             public void onClick(View view) {
 
+                //Si seleccionamos "Editar rutina" nos lleva al fragmento de editar ejercicio pasandole el nombre del ejercicio a editar
 
                 getDialog().dismiss();
                 Bundle bundle = new Bundle();

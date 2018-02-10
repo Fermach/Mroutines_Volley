@@ -21,10 +21,15 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Fermach on 04/02/2018.
+ * Esta clase se utiliza volley para conectarse a nuestro servidor
+ * y manda las respuesta al repositorio de datos
+ *
+ * @author Fermach
+ * @version 1.0.
  */
 
 public class RutinasAPI implements RutinasDataSource{
+
 
     String url_GET="http://192.168.1.8:5000/rutinas";
     String url_POST="http://192.168.1.8:5000/rutinas";
@@ -36,6 +41,9 @@ public class RutinasAPI implements RutinasDataSource{
     }
 
 
+    /**
+     * @param callback
+     */
     @Override
     public void getRutinas(final CargaRutinasCallback callback) {
        Log.i("RutinasAPI", "RUTINASAPI");
@@ -46,6 +54,7 @@ public class RutinasAPI implements RutinasDataSource{
                    public void onResponse(String response) {
                        Log.i("Respuesta_GET_Rutinas", response);
 
+                       //parseamos las rutinas obtenidas json
                        List<Rutina> rutinas = new Gson().fromJson(
                                new StringReader(response),
                                new TypeToken<List<Rutina>>() {
@@ -68,6 +77,11 @@ public class RutinasAPI implements RutinasDataSource{
        req.add(stringRequest);
     }
 
+    /**
+     *
+     * @param rutina
+     * @param callback
+     */
     @Override
     public void createRutina(final Rutina rutina, final CreateRutinaCallback callback) {
         RequestQueue req = VolleySingleton.getInstance(App.getAppContext()).getRequestQueue();
@@ -101,6 +115,12 @@ public class RutinasAPI implements RutinasDataSource{
        req.add(sr);
     }
 
+
+    /**
+     *
+     * @param rutina_nombre
+     * @param callback
+     */
     @Override
     public void deleteRutina(String rutina_nombre, final DeleteRutinaCallback callback) {
         RequestQueue req = VolleySingleton.getInstance(App.getAppContext()).getRequestQueue();
@@ -127,6 +147,12 @@ public class RutinasAPI implements RutinasDataSource{
         req.add(sr);
     }
 
+    /**
+     *
+     * @param rutina_nombre
+     * @param rutina
+     * @param callback
+     */
     @Override
     public void updateRutina(final String rutina_nombre, final Rutina rutina, final UpdateRutinaCallback callback) {
         RequestQueue req = VolleySingleton.getInstance(App.getAppContext()).getRequestQueue();
@@ -166,6 +192,12 @@ public class RutinasAPI implements RutinasDataSource{
         req.add(putRequest);
     }
 
+
+    /**
+     *
+     * @param posicion
+     * @param callback
+     */
     @Override
     public void getRutina(int posicion, CargaRutinaCallback callback) {
 

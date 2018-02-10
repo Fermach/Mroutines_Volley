@@ -1,9 +1,14 @@
 package com.example.fermach.mroutines.Ejercicios.Editar_Ejercicios;
 
 import com.example.fermach.mroutines.Modelos.Ejercicio.Ejercicio;
-
 /**
- * Created by Fermach on 18/01/2018.
+ *
+ * Interfaz con los metodos de nuestro view y presenter del fragmento
+ * para editar ejercicios
+ *
+ * @author Fermach
+ * @version 1.0.
+ *
  */
 
 public interface EditarEjercicioContract {

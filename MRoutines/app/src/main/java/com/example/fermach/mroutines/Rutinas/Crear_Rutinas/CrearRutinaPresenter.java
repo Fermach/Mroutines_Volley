@@ -10,9 +10,12 @@ import com.example.fermach.mroutines.Modelos.Rutina.RutinasRepository;
 import java.util.List;
 
 /**
- * Created by Fermach on 18/01/2018.
+ * Este es el presentador de datos que conecta el fragmento para crear rutinas
+ * con el repositorio de datos
+ * @author Fermach
+ * @version 1.0.
+ *
  */
-
 public class CrearRutinaPresenter implements CrearRutinaContract.Presenter{
     private RutinasRepository rutinasRepository;
     private CrearRutinaContract.View rutinasView;
