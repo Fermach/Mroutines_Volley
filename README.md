@@ -1,3 +1,6 @@
+MROUTINES:
+
+
 Este proyecto consiste en el desarrollo de una App nativa en Android que nos 
 permitirá gestionar nuestras rutinas deportivas, facilitándonos el desempeño 
 de nuestras actividades deportivas favoritas.
