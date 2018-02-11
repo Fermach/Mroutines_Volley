@@ -143,7 +143,7 @@ public class EditarEjercicioVista extends Fragment implements EditarEjercicioCon
 
     public void poblarSpinner(){
             String[] valores_tipo= {"Pierna","Torso", "Brazos","Pecho", "Espalda","Triceps","Biceps",
-                    "Hombros","Gluteos","Biceps Femoral","Cuadriceps", "Gemelos"};
+                    "Hombros","Gluteos","Biceps Femoral","Cuadriceps", "Gemelos", "FullBody"};
 
             String[] valores_unid_tiempo= {"min","seg","hor"};
 

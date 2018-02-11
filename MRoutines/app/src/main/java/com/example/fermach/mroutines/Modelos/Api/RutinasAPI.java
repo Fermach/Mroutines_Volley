@@ -31,10 +31,13 @@ import java.util.Map;
 public class RutinasAPI implements RutinasDataSource{
 
 
-    String url_GET="http://192.168.1.8:5000/rutinas";
-    String url_POST="http://192.168.1.8:5000/rutinas";
-    String url_PUT="http://192.168.1.8:5000/rutinas/nombre/";
-    String url_DELETE="http://192.168.1.8:5000/rutinas/nombre/";
+    /*
+    Rutas para acceder a mi servidor AWS con la base de datos MongoDB
+     */
+    String url_GET="http://ec2-18-219-167-230.us-east-2.compute.amazonaws.com:5000/rutinas";
+    String url_POST="http://ec2-18-219-167-230.us-east-2.compute.amazonaws.com:5000/rutinas";
+    String url_PUT="http://ec2-18-219-167-230.us-east-2.compute.amazonaws.com:5000/rutinas/nombre/";
+    String url_DELETE="http://ec2-18-219-167-230.us-east-2.compute.amazonaws.com:5000/rutinas/nombre/";
 
     public RutinasAPI() {
 

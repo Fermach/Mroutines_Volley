@@ -25,6 +25,6 @@
 {id:"cuadriceps poleasPierna_hipertrofia",nombre : "cuadriceps poleas", series : "3", repeticiones : "12-15", tiempo : "0 min", tipo : "cuadriceps", rutina : "Pierna_hipertrofia" },
 {id:"femoral poleasPierna_hipertrofia",nombre : "femoral poleas", series : "3", repeticiones : "15", tiempo : "0 min", tipo : "biceps femoral", rutina : "Pierna_hipertrofia" },
 {id:"gemelosPierna_hipertrofia",nombre : "gemelos", series : "4", repeticiones : "15", tiempo : "0 min", tipo : "gemelos", rutina : "Pierna_hipertrofia" },
-{id:"golpeos al sacoEntrenamiento_Boxeo",nombre : "golpeos al saco", series : "0", repeticiones : "0", tiempo : "15 min", tipo : "", rutina : "Entrenamiento_Boxeo" },
-{id:"combaEntrenamiento_Boxeo",nombre : "comba", series : "0", repeticiones : "0", tiempo : "15 min", tipo : "", rutina : "Entrenamiento_Boxeo" },
-{id:"peraEntrenamiento_Boxeo",nombre : "pera", series : "0", repeticiones : "0", tiempo : "10 min", tipo : "", rutina : "Entrenamiento_Boxeo" }]
+{id:"golpeos al sacoEntrenamiento_saco",nombre : "golpeos al saco", series : "0", repeticiones : "0", tiempo : "15 min", tipo : "", rutina : "Entrenamiento_saco" },
+{id:"combaEntrenamiento_saco",nombre : "comba", series : "0", repeticiones : "0", tiempo : "15 min", tipo : "", rutina : "Entrenamiento_saco" },
+{id:"peraEntrenamiento_saco",nombre : "pera", series : "0", repeticiones : "0", tiempo : "10 min", tipo : "", rutina : "Entrenamiento_saco" }]

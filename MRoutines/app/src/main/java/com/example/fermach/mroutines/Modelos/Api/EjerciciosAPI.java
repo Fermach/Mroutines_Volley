@@ -30,11 +30,15 @@ import java.util.Map;
 
 public class EjerciciosAPI implements EjerciciosDataSource {
 
-    String url_GET_porRutina="http://192.168.1.8:5000/ejercicios/rutina/";
-    String url_POST="http://192.168.1.8:5000/ejercicios";
-    String url_PUT="http://192.168.1.8:5000/ejercicios/id/";
-    String url_DELETE="http://192.168.1.8:5000/ejercicios/id/";
-    String url_DELETE_porRutina="http://192.168.1.8:5000/ejercicios/rutina/";
+    /*
+     Rutas para acceder a mi servidor AWS con la base de datos MongoDB
+     */
+
+    String url_GET_porRutina="http://ec2-18-219-167-230.us-east-2.compute.amazonaws.com:5000/ejercicios/rutina/";
+    String url_POST="http://ec2-18-219-167-230.us-east-2.compute.amazonaws.com:5000/ejercicios";
+    String url_PUT="http://ec2-18-219-167-230.us-east-2.compute.amazonaws.com:5000/ejercicios/id/";
+    String url_DELETE="http://ec2-18-219-167-230.us-east-2.compute.amazonaws.com:5000/ejercicios/id/";
+    String url_DELETE_porRutina="http://ec2-18-219-167-230.us-east-2.compute.amazonaws.com:5000/ejercicios/rutina/";
 
     public EjerciciosAPI() {
     }
